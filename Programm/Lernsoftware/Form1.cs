@@ -12,20 +12,27 @@ namespace Lernsoftware
 {
     public partial class Form1 : Form
     {
+        Register register = new Register();
 
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = "Hier könnte Ihre Frage stehen!";
+            register.loadCards();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            foreach (var fileCard in register.FileCards)
+            {
+                string text;
+                text = "ID = " + fileCard.FileCardId.ToString() + " | Frage = " + fileCard.Question + " | Antwort = " + fileCard.Answer + "\n";
+                richTextBox1.AppendText(text);
+            }
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            register.addToListOfFileCards(txtQuestion.Text, txtAnswer.Text);
         }
     }
 }

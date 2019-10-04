@@ -16,6 +16,21 @@ namespace Lernsoftware
         private int wrongCounter = 0;
         private int rightCounter = 0;
 
+        public FileCard(string question, string answer)
+        {
+            fileCardId = idCounter;
+            idCounter++;
+            Question = question;
+            Answer = answer;
+        }
+
+        public FileCard(int fileCardId, string question, string answer)
+        {
+            FileCardId = fileCardId;
+            Question = question;
+            Answer = answer;
+        }
+
         public int FileCardId
         {
             get => fileCardId;
@@ -33,6 +48,7 @@ namespace Lernsoftware
         }
 
         //////////////For later statistics////////////////////
+        
         public int TryCounter
         {
             get => tryCounter;
@@ -50,13 +66,8 @@ namespace Lernsoftware
         }
         ///////////////////////////////////////////////////////
 
-        public FileCard(string question, string answer)
-        {
-            fileCardId = idCounter;
-            idCounter++;
-            this.Question = question;
-            this.Answer = answer;
-        }
+       
+
 
 
     }
