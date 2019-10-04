@@ -1,0 +1,3 @@
+﻿1;Welche Farbe hat der Himmel?;Blau
+2;Was ist der Sinn des Lebens?;42
+45632;Wie lauten Ihre bisherigen Fragen?; Nur nicht alle auf einmal!
