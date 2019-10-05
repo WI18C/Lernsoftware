@@ -10,8 +10,16 @@ namespace Lernsoftware
     {
         private int registerId;
         private string registerName;
+        private static int rIdCounter = 0;
         private int containingFileCards;
         private List<FileCard> fileCards = new List<FileCard>();
+
+        public Register(string rName)
+        {
+            registerId = RIdCounter;
+            RIdCounter++;
+            RegisterName = rName;
+        }
 
         public int RegisterId
         {
@@ -36,12 +44,17 @@ namespace Lernsoftware
             get => fileCards;
             set => fileCards = value;
         }
+        public static int RIdCounter
+        {
+            get => rIdCounter;
+            set => rIdCounter = value;
+        }
 
         public void deleteFileCard(int fileCardId)
         {
-            foreach (FileCard fileCard in fileCards)
+            foreach(FileCard fileCard in fileCards)
             {
-                if (fileCard.FileCardId == fileCardId)
+                if(fileCard.FileCardId == fileCardId)
                 {
                     fileCards.Remove(fileCard);
                     break;
@@ -51,11 +64,11 @@ namespace Lernsoftware
 
         public void updateFileCard(int fileCardId, bool isQuestion, string questionOrAnswerText)
         {
-            foreach (FileCard fileCard in fileCards)
+            foreach(FileCard fileCard in fileCards)
             {
-                if (isQuestion)
+                if(isQuestion)
                 {
-                    if (fileCard.FileCardId == fileCardId)
+                    if(fileCard.FileCardId == fileCardId)
                     {
                         fileCard.Question = questionOrAnswerText;
                     }
@@ -63,7 +76,7 @@ namespace Lernsoftware
 
                 else
                 {
-                    if (fileCard.FileCardId == fileCardId)
+                    if(fileCard.FileCardId == fileCardId)
                     {
                         fileCard.Answer = questionOrAnswerText;
                     }
@@ -71,47 +84,63 @@ namespace Lernsoftware
             }
         }
 
-        public void addToListOfFileCards(string question, string answer)
+        //Setzt die static Variable "FileCard.idCounter" auf den höchsten ID Wert + 1, 
+        //damit beim erstellen einer einzelnen Karte die korrekte ID verwendet wird 
+        public void setIdCounter()
         {
-            for (int i = 0; i < FileCards.Count - 1; i++)
+            int highestId = 0;
+            foreach(var fileCard in FileCards)
             {
-               
-            }           
+                if(highestId <= fileCard.FileCardId)
+                {
+                    highestId = fileCard.FileCardId + 1;
+                }
+            }
+            FileCard.IdCounter = highestId;
         }
 
         public void saveListOfCards(List<FileCard> fileCards)
         {
-            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"C:\Users\Adrian\Source\Repos\WI18C\Lernsoftware\Programm\Lernsoftware\FileCards.txt");
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"C:\Users\AOT\source\repos\Lernsoftware\WI18C\Lernsoftware\Programm\Lernsoftware\" + this.RegisterName + ".txt");
 
-            foreach (var fileCard in fileCards)
+            foreach(var fileCard in fileCards)
             {
                 string text = fileCard.FileCardId.ToString() + ";" + fileCard.Question + ";" + fileCard.Answer;
                 writer.WriteLine(text);
             }
-
-            writer.Close();
-        }
-
-        public void saveSingleCard(FileCard fileCard)
-        {
-            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"C:\Users\Adrian\Source\Repos\WI18C\Lernsoftware\Programm\Lernsoftware\FileCards.txt");
-            string text = fileCard.FileCardId.ToString() + ";" + fileCard.Question + ";" + fileCard.Answer;
-            writer.WriteLine(text);
             writer.Close();
         }
 
         public void loadCards()
         {
-            System.IO.StreamReader reader = new System.IO.StreamReader(@"C:\Users\Adrian\Source\Repos\WI18C\Lernsoftware\Programm\Lernsoftware\FileCards.txt");
+            //Erstellt einen Reader der eine Datei am angegebenen Pfad ausliest
+            System.IO.StreamReader reader = new System.IO.StreamReader(@"C:\Users\AOT\source\repos\Lernsoftware\WI18C\Lernsoftware\Programm\Lernsoftware\" + this.RegisterName + ".txt");
             string readLine;
-            while ((readLine = reader.ReadLine()) != null)
+            while((readLine = reader.ReadLine()) != null)
             {
+                //Ein Array in dem die Strings gespeichert werden, die durch ";" getrennt wurden 
                 string[] stringArr = readLine.Split(';');
+                //Durch die Daten im Array, wird eine FileCard erzeugt
                 FileCard card = new FileCard(Convert.ToInt32(stringArr[0]), stringArr[1], stringArr[2]);
-                fileCards.Add(card);
-            }
 
-            reader.Close();
+                //Prüfung, ob die FileCard "card" schon existiert 
+                bool isInList = false;
+                foreach(var fileCard in FileCards)
+                {
+                    if(fileCard.Equals(card))
+                    {
+                        isInList = true;
+                        break;
+                    }
+                }
+
+                if(isInList == false)
+                {
+                    fileCards.Add(card);
+                }      
+            }
+            reader.Close();           
+            setIdCounter();
         }
     }
 }

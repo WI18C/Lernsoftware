@@ -9,12 +9,20 @@ namespace Lernsoftware
     class CardBox
     {
         private int cardBoxId;
+        private static int cbIdCounter = 0;
         private string cardBoxName;
         private int containingRegisters;
         private int containingFileCards;
         private List<Register> registers;
         private LearningUnit learningUnit;
         private CardBoxDesign cardBoxDesign;
+
+        public CardBox(string cardboxName)
+        {
+            CardBoxId = CbIdCounter;
+            CbIdCounter++;
+            CardBoxName = cardboxName;
+        }
 
         public int CardBoxId
         {
@@ -51,6 +59,10 @@ namespace Lernsoftware
             get => cardBoxDesign;
             set => cardBoxDesign = value;
         }
-
+        public static int CbIdCounter
+        {
+            get => cbIdCounter;
+            set => cbIdCounter = value;
+        }
     }
 }

@@ -9,13 +9,15 @@ namespace Lernsoftware
     class FileCard
     {
         private int fileCardId;
-        static int idCounter = 0;
+        private static int idCounter = 0;
         private string question;
         private string answer;
         private int tryCounter = 0;
         private int wrongCounter = 0;
         private int rightCounter = 0;
+        private MySQLDao mySQLDao = new MySQLDao();
 
+        
         public FileCard(string question, string answer)
         {
             fileCardId = idCounter;
@@ -35,6 +37,11 @@ namespace Lernsoftware
         {
             get => fileCardId;
             set => fileCardId = value;
+        }
+        public static int IdCounter
+        {
+            get => idCounter;
+            set => idCounter = value;
         }
         public string Question
         {
@@ -64,10 +71,24 @@ namespace Lernsoftware
             get => rightCounter;
             set => rightCounter = value;
         }
-        ///////////////////////////////////////////////////////
 
-       
+        public override bool Equals(object obj)
+        {
+            if(obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
 
+            FileCard card = (FileCard)obj;
+            if(card.FileCardId == this.FileCardId
+                && card.Question == this.Question
+                && card.Answer == this.Answer)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
 
 
     }

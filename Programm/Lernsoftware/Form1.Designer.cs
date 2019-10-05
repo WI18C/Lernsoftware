@@ -34,84 +34,83 @@
             this.txtAnswer = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cmdSaveCard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmdReadFile
             // 
-            this.cmdReadFile.Location = new System.Drawing.Point(648, 26);
-            this.cmdReadFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmdReadFile.Location = new System.Drawing.Point(887, 66);
             this.cmdReadFile.Name = "cmdReadFile";
-            this.cmdReadFile.Size = new System.Drawing.Size(123, 44);
-            this.cmdReadFile.TabIndex = 1;
-            this.cmdReadFile.Text = "einlesen";
-            this.cmdReadFile.UseVisualStyleBackColor = true;
-            this.cmdReadFile.Click += new System.EventHandler(this.button2_Click);
+            this.cmdReadFile.Size = new System.Drawing.Size(152, 57);
+            this.cmdReadFile.TabIndex = 9;
+            this.cmdReadFile.Text = "Karten anzeigen";
+            this.cmdReadFile.Click += new System.EventHandler(this.cmdReadFile_Click);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(516, 93);
+            this.richTextBox1.Location = new System.Drawing.Point(627, 166);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(377, 291);
-            this.richTextBox1.TabIndex = 5;
+            this.richTextBox1.Size = new System.Drawing.Size(672, 371);
+            this.richTextBox1.TabIndex = 8;
             this.richTextBox1.Text = "";
             // 
             // txtQuestion
             // 
-            this.txtQuestion.Location = new System.Drawing.Point(111, 107);
+            this.txtQuestion.Location = new System.Drawing.Point(166, 165);
+            this.txtQuestion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtQuestion.Name = "txtQuestion";
-            this.txtQuestion.Size = new System.Drawing.Size(282, 20);
+            this.txtQuestion.Size = new System.Drawing.Size(421, 26);
             this.txtQuestion.TabIndex = 6;
             // 
             // txtAnswer
             // 
-            this.txtAnswer.Location = new System.Drawing.Point(111, 133);
+            this.txtAnswer.Location = new System.Drawing.Point(166, 205);
+            this.txtAnswer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAnswer.Name = "txtAnswer";
-            this.txtAnswer.Size = new System.Drawing.Size(282, 20);
+            this.txtAnswer.Size = new System.Drawing.Size(421, 26);
             this.txtAnswer.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 136);
+            this.label1.Location = new System.Drawing.Point(76, 209);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(68, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "Antwort:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 110);
+            this.label2.Location = new System.Drawing.Point(90, 169);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(55, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "Frage:";
             // 
-            // button1
+            // cmdSaveCard
             // 
-            this.button1.Location = new System.Drawing.Point(198, 26);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 44);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Karte speichern";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button2_Click);
+            this.cmdSaveCard.Location = new System.Drawing.Point(299, 66);
+            this.cmdSaveCard.Name = "cmdSaveCard";
+            this.cmdSaveCard.Size = new System.Drawing.Size(152, 57);
+            this.cmdSaveCard.TabIndex = 8;
+            this.cmdSaveCard.Text = "Karte speichern";
+            this.cmdSaveCard.Click += new System.EventHandler(this.cmdSaveCard_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 396);
+            this.ClientSize = new System.Drawing.Size(1358, 609);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtAnswer);
             this.Controls.Add(this.txtQuestion);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cmdSaveCard);
             this.Controls.Add(this.cmdReadFile);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -126,7 +125,7 @@
         private System.Windows.Forms.TextBox txtAnswer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cmdSaveCard;
     }
 }
 

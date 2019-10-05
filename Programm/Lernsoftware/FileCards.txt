@@ -1,3 +1,4 @@
-﻿1;Welche Farbe hat der Himmel?;Blau
+1;Welche Farbe hat der Himmel?;Blau
 2;Was ist der Sinn des Lebens?;42
-45632;Wie lauten Ihre bisherigen Fragen?; Nur nicht alle auf einmal!
+3;Wie lauten Ihre bisherigen Fragen?; Nur nicht alle auf einmal!
+4;Was geht bei euch?;Alles was Beine hat
