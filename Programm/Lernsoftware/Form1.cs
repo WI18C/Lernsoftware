@@ -13,22 +13,22 @@ namespace Lernsoftware
     public partial class Form1 : Form
     {
         Register register = new Register("Testregister");
-        MySQLDao dao = new MySQLDao();
+        //MySQLDao dao = new MySQLDao();
 
         public Form1()
         {
             InitializeComponent();
             register.loadCards();
-            try
-            {
-                MySQLDao.openConnection();
-                richTextBox1.Text = "Verbindung ist offen";
-            }
+            //try
+            //{
+            //    MySQLDao.openConnection();
+            //    richTextBox1.Text = "Verbindung ist offen";
+            //}
 
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message + MySQLDao.ConnectionString);
-            }
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message + MySQLDao.ConnectionString);
+            //}
         }
 
         private void cmdSaveCard_Click(object sender, EventArgs e)
@@ -51,7 +51,6 @@ namespace Lernsoftware
                 string text;
                 text = "ID = " + fileCard.FileCardId.ToString() + " | Frage = " + fileCard.Question + " | Antwort = " + fileCard.Answer + "\n";
                 richTextBox1.AppendText(text);
-
             }
         }
     }
