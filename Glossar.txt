@@ -1,0 +1,6 @@
+CardBox: Karteikasten, der alle FileCards eines Users für ein vom User festgelegtes Lerngebiet enthält
+FileCard: einzelne Karteikarte, die genau eine Frage und eine Antwort enthält. FileCards werden vom User erstellt, gespeichert und können im Training abgefragt werden.
+LearningUnit: Statistische Erfassung der Lerneinheit während des Trainings.
+Register: Ebene der CardBox, in der FileCards liegen. FileCards werden bei jeder richtigen Beantwortung ein Register höher abgelegt.
+Training: Lernmodus, in dem die FileCards in willkürlicher Reihenfolge abgefragt werden
+Settings: Modus, in dem Einstellungen vorgenommen werden können.
