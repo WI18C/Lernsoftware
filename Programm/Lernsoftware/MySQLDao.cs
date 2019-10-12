@@ -9,25 +9,92 @@ namespace Lernsoftware
 {
     class MySQLDao
     {
-        private static MySqlConnection connection;
-        static string connectionString = String.Format(
-            "user id={0}; password={1}; database={2}", "localhost", "", "lernsoftwaredb");
+        static MySqlConnection connection = new MySqlConnection();
 
-        public static string ConnectionString
+        public string connect(string user, string password)
         {
-            get => connectionString;
-            set => connectionString = value;
+            connection.ConnectionString = "SERVER=localhost; DATABASE=lernsoftwaredb; UID=" + user + "; PASSWORD=" + password + ";";
+
+            try
+            {
+                connection.Open();
+                return "Verbindungsaufbau erfolgreich";
+            }
+
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
         }
-
-        public static void openConnection()
+        public MySqlConnection getConnection(string user, string password)
         {
-            connection = new MySqlConnection(connectionString);
-            connection.Open();
+            connect(user, password);
+            return connection;
         }
-
-        public static void closeConnection()
+        public string closeConnection()
         {
-            connection.Close();
+            if(connection.State.ToString() != "Closed")
+            {
+                connection.Close();
+                if(connection.State.ToString() == "Closed")
+                {
+                    return "DB-Verbindung erfolgreich geschlossen";
+                }
+                else
+                    return "Fehler beim Abmelden der DB-Verbindung";
+            }
+
+            else
+                return "Es bestand keine DB-Verbindung";
+        }
+        public void saveSingleFileCardinDB(FileCard fileCard)
+        {
+            string commandstring = "INSERT INTO `filecards` (`fileCardId`, `question`, `answer`) " +
+                                   "VALUES(NULL, '" + fileCard.Question + "', '" + fileCard.Answer + "');";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+        public void saveListOfFileCards(List<FileCard> fileCards)
+        {
+            string commandstring = "INSERT INTO `filecards` (`fileCardId`, `question`, `answer`) VALUES";
+
+            int counter = 0;
+            foreach(var card in fileCards)
+            {
+                if(counter != fileCards.Count-1)
+                {
+                    commandstring += "(NULL, '" + card.Question + "', '" + card.Answer + "'), ";
+                }
+                else
+                    commandstring += "(NULL, '" + card.Question + "', '" + card.Answer + "');";
+                counter++;
+            }
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+
         }
     }
 }

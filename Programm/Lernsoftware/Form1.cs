@@ -7,28 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Lernsoftware
 {
     public partial class Form1 : Form
     {
         Register register = new Register("Testregister");
-        //MySQLDao dao = new MySQLDao();
+        MySQLDao dao = new MySQLDao();
+
 
         public Form1()
         {
             InitializeComponent();
             register.loadCards();
-            //try
-            //{
-            //    MySQLDao.openConnection();
-            //    richTextBox1.Text = "Verbindung ist offen";
-            //}
+            try
+            {
+                MySQLDao dao = new MySQLDao();
+                MySqlConnection c = dao.getConnection("root", "");
 
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message + MySQLDao.ConnectionString);
-            //}
+                if(c != null && c.State.ToString() == "Open")
+                {
+                    richTextBox1.Text = "Verbindung ist offen";
+                }
+            }
+
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cmdSaveCard_Click(object sender, EventArgs e)
@@ -37,9 +44,17 @@ namespace Lernsoftware
             {
                 FileCard card = new FileCard(txtQuestion.Text, txtAnswer.Text);
                 register.FileCards.Add(card);
-                register.saveListOfCards(register.FileCards);
-            }
-           
+                dao.saveSingleFileCardinDB(card);
+            }           
+        }
+
+        //Testklasse, kann gelöscht werden
+        void dummySaveListInDB()
+        {
+            List<FileCard> fileCards = new List<FileCard>();
+            fileCards.Add(new FileCard("lalala", "blabla"));
+            fileCards.Add(new FileCard("fjdkshs", "fjdghfkj"));
+            dao.saveListOfFileCards(fileCards);
         }
 
         private void cmdReadFile_Click(object sender, EventArgs e)
