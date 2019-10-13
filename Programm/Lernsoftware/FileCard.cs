@@ -9,7 +9,7 @@ namespace Lernsoftware
     class FileCard
     {
         private int fileCardId;
-        private static int idCounter = 0;
+        private static int idCounter = 1;
         private string question;
         private string answer;
         private int tryCounter = 0;

@@ -20,22 +20,22 @@ namespace Lernsoftware
         public Form1()
         {
             InitializeComponent();
-            register.loadCards();
-            try
-            {
-                MySQLDao dao = new MySQLDao();
-                MySqlConnection c = dao.getConnection("root", "");
+            //register.loadCards();
+            //try
+            //{
+            //    MySQLDao dao = new MySQLDao();
+            //    MySqlConnection c = dao.getConnection("root", "");
 
-                if(c != null && c.State.ToString() == "Open")
-                {
-                    richTextBox1.Text = "Verbindung ist offen";
-                }
-            }
+            //    if(c != null && c.State.ToString() == "Open")
+            //    {
+            //        richTextBox1.Text = "Verbindung ist offen";
+            //    }
+            //}
 
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void cmdSaveCard_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace Lernsoftware
             {
                 FileCard card = new FileCard(txtQuestion.Text, txtAnswer.Text);
                 register.FileCards.Add(card);
-                dao.saveSingleFileCardinDB(card);
+                dao.saveSingleFileCardinDB(card, register.RegisterId);
             }           
         }
 
@@ -54,17 +54,28 @@ namespace Lernsoftware
             List<FileCard> fileCards = new List<FileCard>();
             fileCards.Add(new FileCard("lalala", "blabla"));
             fileCards.Add(new FileCard("fjdkshs", "fjdghfkj"));
-            dao.saveListOfFileCards(fileCards);
+            dao.saveListOfFileCards(fileCards, register.RegisterId);
+        }
+
+        void dummyUpdateFileCard()
+        {
+            ////Lade Filecards in das Register
+            //register.FileCards = dao.loadFilecardsInResgisterFromDB(register.RegisterId);
+            //dao.updateFileCardInDB(register.FileCards[0], true, "Wie heißen die Konjunktionen? ODER und...?");
+            //dao.updateFileCardInDB(register.FileCards[0], false, "UND");
+            //dao.updateFileCardInDB(register.FileCards[0], "Wie ändert man Frage und Antwort gleichzeitig?", "Na so!");
+            
         }
 
         private void cmdReadFile_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
-            foreach(var fileCard in register.FileCards)
+
+            List<FileCard> list = dao.loadFilecardsInResgisterFromDB(register.RegisterId);
+
+            foreach(var fileCard in list)
             {
-                register.loadCards();
-                string text;
-                text = "ID = " + fileCard.FileCardId.ToString() + " | Frage = " + fileCard.Question + " | Antwort = " + fileCard.Answer + "\n";
+                string text = "ID = " + fileCard.FileCardId + " | Frage = " + fileCard.Question + " | Antwort = " + fileCard.Answer + "\n";
                 richTextBox1.AppendText(text);
             }
         }
