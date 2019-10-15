@@ -10,8 +10,10 @@ namespace Lernsoftware
     {
         private int registerId;
         private string registerName;
-        private static int rIdCounter = 0;
+        private static int rIdCounter = 1;
         private int containingFileCards;
+        private int registerTryCounter;
+        private int registerRightCounter;
         private List<FileCard> fileCards = new List<FileCard>();
 
         public Register(string rName)
@@ -19,6 +21,14 @@ namespace Lernsoftware
             registerId = RIdCounter;
             RIdCounter++;
             RegisterName = rName;
+        }
+
+        public Register(int registerId, string registerName, int registerTryCounter, int registerRightCounter)
+        {
+            RegisterId = registerId;
+            RegisterName = registerName;
+            RegisterTryCounter = registerTryCounter;
+            RegisterRightCounter = registerRightCounter;
         }
 
         public int RegisterId
@@ -48,6 +58,16 @@ namespace Lernsoftware
         {
             get => rIdCounter;
             set => rIdCounter = value;
+        }
+        public int RegisterTryCounter
+        {
+            get => registerTryCounter;
+            set => registerTryCounter = value;
+        }
+        public int RegisterRightCounter
+        {
+            get => registerRightCounter;
+            set => registerRightCounter = value;
         }
 
         public void deleteFileCard(int fileCardId)
@@ -111,36 +131,36 @@ namespace Lernsoftware
             writer.Close();
         }
 
-        public void loadCards()
-        {
-            //Erstellt einen Reader der eine Datei am angegebenen Pfad ausliest
-            System.IO.StreamReader reader = new System.IO.StreamReader(@"C:\Users\AOT\source\repos\Lernsoftware\WI18C\Lernsoftware\Programm\Lernsoftware\" + this.RegisterName + ".txt");
-            string readLine;
-            while((readLine = reader.ReadLine()) != null)
-            {
-                //Ein Array in dem die Strings gespeichert werden, die durch ";" getrennt wurden 
-                string[] stringArr = readLine.Split(';');
-                //Durch die Daten im Array, wird eine FileCard erzeugt
-                FileCard card = new FileCard(Convert.ToInt32(stringArr[0]), stringArr[1], stringArr[2]);
+        //public void loadCards()
+        //{
+        //    //Erstellt einen Reader der eine Datei am angegebenen Pfad ausliest
+        //    System.IO.StreamReader reader = new System.IO.StreamReader(@"C:\Users\AOT\source\repos\Lernsoftware\WI18C\Lernsoftware\Programm\Lernsoftware\" + this.RegisterName + ".txt");
+        //    string readLine;
+        //    while((readLine = reader.ReadLine()) != null)
+        //    {
+        //        //Ein Array in dem die Strings gespeichert werden, die durch ";" getrennt wurden 
+        //        string[] stringArr = readLine.Split(';');
+        //        //Durch die Daten im Array, wird eine FileCard erzeugt
+        //        FileCard card = new FileCard(Convert.ToInt32(stringArr[0]), stringArr[1], stringArr[2]);
 
-                //Prüfung, ob die FileCard "card" schon existiert 
-                bool isInList = false;
-                foreach(var fileCard in FileCards)
-                {
-                    if(fileCard.Equals(card))
-                    {
-                        isInList = true;
-                        break;
-                    }
-                }
+        //        //Prüfung, ob die FileCard "card" schon existiert 
+        //        bool isInList = false;
+        //        foreach(var fileCard in FileCards)
+        //        {
+        //            if(fileCard.Equals(card))
+        //            {
+        //                isInList = true;
+        //                break;
+        //            }
+        //        }
 
-                if(isInList == false)
-                {
-                    fileCards.Add(card);
-                }      
-            }
-            reader.Close();           
-            setIdCounter();
-        }
+        //        if(isInList == false)
+        //        {
+        //            fileCards.Add(card);
+        //        }      
+        //    }
+        //    reader.Close();           
+        //    setIdCounter();
+        //}
     }
 }
