@@ -11,6 +11,8 @@ namespace Lernsoftware
     {
         static MySqlConnection connection = new MySqlConnection();
 
+        //===============================================Verbindungsaufbau==================================================
+
         public string connect(string user, string password)
         {
             connection.ConnectionString = "SERVER=localhost; DATABASE=lernsoftwaredb; UID=" + user + "; PASSWORD=" + password + ";";
@@ -26,12 +28,14 @@ namespace Lernsoftware
                 return ex.Message;
             }
         }
+
         public MySqlConnection getConnection(string user, string password)
         {
             connect(user, password);
             return connection;
         }
 
+        //=================================================FileCards==================================================
         public void saveSingleFileCardinDB(FileCard fileCard, int registerID)
         {
             MySqlConnection connection = getConnection("root", "");
@@ -53,6 +57,7 @@ namespace Lernsoftware
             }
             connection.Close();
         }
+
         public void saveListOfFileCards(List<FileCard> fileCards, int registerID)
         {
             MySqlConnection connection = getConnection("root", "");
@@ -87,6 +92,7 @@ namespace Lernsoftware
             connection.Close();
 
         }
+
         public List<FileCard> loadFilecardsInResgisterFromDB(int registerID)
         {
             MySqlConnection connection = getConnection("root", "");
@@ -133,7 +139,7 @@ namespace Lernsoftware
              dao.updateFileCardInDB(register.FileCards[0], false, "UND");
              dao.updateFileCardInDB(register.FileCards[0], "Wie ändert man Frage und Antwort gleichzeitig?", "Na so!");
           **/
-        public void updateFileCardInDB(FileCard OriginalfileCard, bool changeQuestion, string changedText)
+        public void updateFileCardInDB(FileCard OriginalfileCard, bool isQuestion, string changedText)
         {
 
             MySqlConnection connection = getConnection("root", "");
@@ -141,7 +147,7 @@ namespace Lernsoftware
             FileCard clone = new FileCard(OriginalfileCard.FileCardId, OriginalfileCard.Question, OriginalfileCard.Answer);
             string commandstring = "";
 
-            if(changeQuestion)
+            if(isQuestion)
             {
                 clone.Question = changedText;
             }
@@ -190,11 +196,13 @@ namespace Lernsoftware
             }
         }
 
+        //==================================================Register==================================================
         public List<Register> loadRegistersInCardboxFromDB(int cardboxID)
         {
             MySqlConnection connection = getConnection("root", "");
 
-            string commandstring = "SELECT register_ID, register_Name, register_counter, register_rightcounter FROM `register` WHERE cardbox_ID = " + cardboxID + ";";
+            string commandstring = "SELECT register_ID, register_Name, register_counter, register_rightcounter " +
+                                   "FROM `register` WHERE cardbox_ID = " + cardboxID + ";";
 
             if(connection.State.ToString() == "Open")
             {
@@ -228,6 +236,234 @@ namespace Lernsoftware
             }
 
             return null;
+        }
+
+        public void saveRegisterInDB(int cardboxID, string registerName)
+        {
+            MySqlConnection connection = getConnection("root", "");
+
+            string commandstring = "INSERT INTO `register` (`register_ID`, `cardbox_ID`, `register_Name`, `register_counter`, `register_rightcounter`) " +
+                                   "VALUES(NULL, '" + cardboxID + "', '" + registerName + "', '0', '0');";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            connection.Close();
+        }
+
+        public void updateRegister(Register register, string registerName)
+        {
+            MySqlConnection connection = getConnection("root", "");
+            //Erstellen eines Registers mit veränderten Werten, aber gleicher ID
+            Register clone = new Register(register.RegisterId, registerName, register.RegisterTryCounter, register.RegisterRightCounter);
+            string commandstring = "UPDATE `register` SET `register_Name` = '" + clone.RegisterName + "' " +
+                                   "WHERE `register`.`register_ID` = " + register.RegisterId +";";
+            MySqlCommand command = new MySqlCommand(commandstring, connection);
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+
+            catch(Exception)
+            {
+
+                throw;
+            }
+        }
+
+        //=================================================Cardboxes==================================================
+        public List<CardBox> loadCardBoxesInUserFromDB(int userID)
+        {
+            MySqlConnection connection = getConnection("root", "");
+
+            string commandstring = "SELECT cardbox_ID, cardbox_name " +
+                                   "FROM `cardbox` " +
+                                   "WHERE user_ID = " + userID + ";";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    MySqlDataReader reader = command.ExecuteReader();
+
+
+                    if(reader.HasRows)
+                    {
+                        List<CardBox> cardBoxes = new List<CardBox>();
+                        while(reader.Read())
+                        {
+                            CardBox cardBox = new CardBox(reader.GetInt32(0), reader.GetString(1));
+                            cardBoxes.Add(cardBox);
+                        }
+
+                        connection.Close();
+                        return cardBoxes;
+                    }
+
+                    else
+                        return null;
+                }
+
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return null;
+        }
+
+        public void saveCardboxInDB(int userID, string cardBoxName)
+        {
+            MySqlConnection connection = getConnection("root", "");
+
+            string commandstring = "INSERT INTO `cardbox` (`cardbox_ID`, `cardbox_name`, `user_ID`) " +
+                                   "VALUES (NULL, '" + cardBoxName + "', '" + userID + "');";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            connection.Close();
+        }
+
+        public void updateCardboxInDB(CardBox cardBox, string cardBoxName)
+        {
+            MySqlConnection connection = getConnection("root", "");
+            //Erstellen einer CardBox mit veränderten Werten, aber gleicher ID
+            CardBox clone = new CardBox(cardBox.CardBoxId, cardBoxName);
+            string commandstring = "UPDATE `cardbox` SET `cardbox_name` = '" + clone.CardBoxName + "' " +
+                                   "WHERE `cardbox`.`cardbox_ID` = "+ cardBox.CardBoxId + ";";
+
+            MySqlCommand command = new MySqlCommand(commandstring, connection);
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+
+            catch(Exception)
+            {
+
+                throw;
+            }
+        }
+
+        //===================================================Users==================================================
+
+        public User userLogIn(string userName, string password)
+        {
+            MySqlConnection connection = getConnection("root", "");
+
+            string commandstring = "SELECT user_ID, user_name, user_password " +
+                                   "FROM `user` " +
+                                   "WHERE user_name = '" + userName + "';";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    MySqlDataReader reader = command.ExecuteReader();
+                    if(reader.HasRows)
+                    {
+                        User user = null;
+                        while(reader.Read())
+                        {
+                            if(reader.GetString(2) == password)
+                            {
+                                user = new User(reader.GetInt32(0), reader.GetString(1));
+                            }                            
+                        }
+                        connection.Close();
+                        return user;
+                    }
+                    else
+                        return null;
+                }
+
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return null;
+        }
+
+        public User CreateNewUser(string username, string password)
+        {
+            User user = new User(username);
+            MySqlConnection connection = getConnection("root", "");
+            string commandstring = "INSERT INTO `user` (`user_ID`, `user_name`, `user_password`) " +
+                                   "VALUES (NULL, '" + username + "', '" + password + "');";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            connection.Close();
+
+            user = userLogIn(username, password);
+
+            return user;
+        }
+
+        public void updateUser(User originalUser, bool isChangedValueTheUsername, string changedText)
+        {
+            MySqlConnection connection = getConnection("root", "");
+            string commandstring = "";
+            if(isChangedValueTheUsername)
+            {
+                User clone = new User(originalUser.UserId, changedText);
+                commandstring = "UPDATE `user` " +
+                                   "SET `user_name` = '" + clone.Username + "' " +
+                                   "WHERE `user`.`user_ID` = " + clone.UserId + ";";
+            }
+
+            else
+            {
+                commandstring = "UPDATE `user` " +
+                                   "SET `user_password` = '" + changedText + "' " +
+                                   "WHERE `user`.`user_ID` = " + originalUser.UserId + ";";
+            }
+
+            MySqlCommand command = new MySqlCommand(commandstring, connection);
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+
+            catch(Exception)
+            {
+
+                throw;
+            }
         }
 
 

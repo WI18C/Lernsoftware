@@ -24,6 +24,13 @@ namespace Lernsoftware
             CardBoxName = cardboxName;
         }
 
+        public CardBox(int cardboxID, string cardboxName)
+        {
+            CardBoxId = cardboxID;
+            CardBoxName = cardBoxName;
+            CbIdCounter++;
+        }
+
         public int CardBoxId
         {
             get => cardBoxId;

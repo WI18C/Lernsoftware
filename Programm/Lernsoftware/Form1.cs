@@ -79,5 +79,11 @@ namespace Lernsoftware
                 richTextBox1.AppendText(text);
             }
         }
+
+        private void cmdLogIn_Click(object sender, EventArgs e)
+        {
+            User user = dao.userLogIn(txtUsername.Text, txtPassword.Text);
+            richTextBox1.AppendText("Username = " + user.Username + " | UserID = " + user.UserId + "\n");
+        }
     }
 }

@@ -9,24 +9,29 @@ namespace Lernsoftware
     class User
     {
         private int userId;
-        private string lastName;
-        private string firstName;
+        private string userName;
         private List<CardBox> cardBoxList;
+
+        public User(int userID, string username)
+        {
+            UserId = userID;
+            Username = username;
+        }
+
+        public User(string username)
+        {
+            Username = username;
+        }
 
         public int UserId
         {
             get => userId;
             set => userId = value;
         }
-        public string LastName
+        public string Username
         {
-            get => lastName;
-            set => lastName = value;
-        }
-        public string FirstName
-        {
-            get => firstName;
-            set => firstName = value;
+            get => userName;
+            set => userName = value;
         }
         internal List<CardBox> CardBoxList
         {
