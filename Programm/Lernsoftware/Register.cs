@@ -8,17 +8,45 @@ namespace Lernsoftware
 {
     class Register
     {
+#region parameter
+        private int containingFileCards;
+        private int counter;
+        private int counterSuccess;
         private int registerId;
         private string registerName;
         private static int rIdCounter = 0;
         private int containingFileCards;
         private List<FileCard> fileCards = new List<FileCard>();
+#endregion
 
+#region constructor
         public Register(string rName)
         {
             registerId = RIdCounter;
             RIdCounter++;
             RegisterName = rName;
+        }
+#endregion
+
+#region get + set
+        // Großbuchstabe: Public, kleinbuchstabe: private
+
+        public int ContainingFileCards
+        {
+            get => containingFileCards;
+            set => containingFileCards = value;
+        }
+
+        public int Counter
+        {
+            get => counter;
+            set => counter = value;
+        }
+
+        public int CounterSuccess
+        {
+            get => counterSuccess;
+            set => counterSuccess = value;
         }
 
         public int RegisterId
@@ -49,6 +77,8 @@ namespace Lernsoftware
             get => rIdCounter;
             set => rIdCounter = value;
         }
+#endregion
+
 
         public void deleteFileCard(int fileCardId)
         {
@@ -141,6 +171,29 @@ namespace Lernsoftware
             }
             reader.Close();           
             setIdCounter();
+        }
+//still to do...
+        public void changeName(string newName)
+        {
+
+        }
+
+        public void mixFileCard()
+        {
+
+        }
+
+        public Register Register(Register register)
+        {
+            return register;
+        }
+        public int rightCounter()
+        {
+            return counter;
+        }
+        public int tryCounter()
+        {
+            return counter;
         }
     }
 }
