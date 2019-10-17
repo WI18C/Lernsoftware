@@ -8,17 +8,56 @@ namespace Lernsoftware
 {
     class Register
     {
+#region parameter
+        private int containingFileCards;
+        private int counter;
+        private int counterSuccess;
         private int registerId;
         private string registerName;
         private static int rIdCounter = 0;
         private int containingFileCards;
         private List<FileCard> fileCards = new List<FileCard>();
+        private int registerTryCounter;
+        private int registerRightCounter;
+#endregion
 
+#region constructor
         public Register(string rName)
         {
             registerId = RIdCounter;
             RIdCounter++;
             RegisterName = rName;
+        }
+
+//Konflikte bei Registererstellung noch nicht berücksichtigt (z.B. ID)
+        public Register(int registerId, string registerName, int registerTryCounter, int registerRightCounter)
+        {
+            RegisterId = registerId;
+            RegisterName = registerName;
+            RegisterTryCounter = registerTryCounter;
+            RegisterRightCounter = registerRightCounter;
+        }
+#endregion
+
+#region get + set
+        // Großbuchstabe: Public, kleinbuchstabe: private
+
+        public int ContainingFileCards
+        {
+            get => containingFileCards;
+            set => containingFileCards = value;
+        }
+
+        public int Counter
+        {
+            get => counter;
+            set => counter = value;
+        }
+
+        public int CounterSuccess
+        {
+            get => counterSuccess;
+            set => counterSuccess = value;
         }
 
         public FileCard getFileCardById(int cardId)
@@ -62,6 +101,20 @@ namespace Lernsoftware
             get => rIdCounter;
             set => rIdCounter = value;
         }
+
+         public int RegisterTryCounter
+        {
+            get => registerTryCounter;
+            set => registerTryCounter = value;
+        }
+
+        public int RegisterRightCounter
+        {
+            get => registerRightCounter;
+            set => registerRightCounter = value;
+        }
+#endregion
+
 
         public void deleteFileCard(int fileCardId)
         {
@@ -154,6 +207,31 @@ namespace Lernsoftware
             }
             reader.Close();           
             setIdCounter();
+        }
+//still to do...
+        public void changeName(string newName)
+        {
+
+        }
+
+        public void mixFileCard()
+        {
+
+        }
+
+        public Register Register(Register register)
+        {
+            return register;
+        }
+
+        public int rightCounter()
+        {
+            return counter;
+        }
+
+        public int tryCounter()
+        {
+            return counter;
         }
     }
 }

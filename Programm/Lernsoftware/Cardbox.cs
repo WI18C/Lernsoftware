@@ -9,8 +9,8 @@ namespace Lernsoftware
     class CardBox
     {
         private int cardBoxId;
-        private static int cbIdCounter = 0;
         private static int cardBoxSuccessCounter = 0;
+        private static int cbIdCounter = 1;
         private string cardBoxName;
         private int containingRegisters;
         private int containingFileCards;
