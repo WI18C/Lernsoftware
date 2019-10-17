@@ -21,6 +21,19 @@ namespace Lernsoftware
             RegisterName = rName;
         }
 
+        public FileCard getFileCardById(int cardId)
+        {
+            foreach(var FileCard in fileCards)
+            {
+                if(FileCard.fileCardId == cardId)
+                {
+                    return FileCard;
+                }
+                else{}
+            }
+        }
+
+
         public int RegisterId
         {
             get => registerId;
