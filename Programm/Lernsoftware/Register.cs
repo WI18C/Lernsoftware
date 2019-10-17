@@ -8,45 +8,27 @@ namespace Lernsoftware
 {
     class Register
     {
-#region parameter
-        private int containingFileCards;
-        private int counter;
-        private int counterSuccess;
         private int registerId;
         private string registerName;
-        private static int rIdCounter = 0;
+        private static int rIdCounter = 1;
         private int containingFileCards;
+        private int registerTryCounter;
+        private int registerRightCounter;
         private List<FileCard> fileCards = new List<FileCard>();
-#endregion
 
-#region constructor
         public Register(string rName)
         {
             registerId = RIdCounter;
             RIdCounter++;
             RegisterName = rName;
         }
-#endregion
 
-#region get + set
-        // Großbuchstabe: Public, kleinbuchstabe: private
-
-        public int ContainingFileCards
+        public Register(int registerId, string registerName, int registerTryCounter, int registerRightCounter)
         {
-            get => containingFileCards;
-            set => containingFileCards = value;
-        }
-
-        public int Counter
-        {
-            get => counter;
-            set => counter = value;
-        }
-
-        public int CounterSuccess
-        {
-            get => counterSuccess;
-            set => counterSuccess = value;
+            RegisterId = registerId;
+            RegisterName = registerName;
+            RegisterTryCounter = registerTryCounter;
+            RegisterRightCounter = registerRightCounter;
         }
 
         public int RegisterId
@@ -77,8 +59,16 @@ namespace Lernsoftware
             get => rIdCounter;
             set => rIdCounter = value;
         }
-#endregion
-
+        public int RegisterTryCounter
+        {
+            get => registerTryCounter;
+            set => registerTryCounter = value;
+        }
+        public int RegisterRightCounter
+        {
+            get => registerRightCounter;
+            set => registerRightCounter = value;
+        }
 
         public void deleteFileCard(int fileCardId)
         {
@@ -141,59 +131,36 @@ namespace Lernsoftware
             writer.Close();
         }
 
-        public void loadCards()
-        {
-            //Erstellt einen Reader der eine Datei am angegebenen Pfad ausliest
-            System.IO.StreamReader reader = new System.IO.StreamReader(@"C:\Users\AOT\source\repos\Lernsoftware\WI18C\Lernsoftware\Programm\Lernsoftware\" + this.RegisterName + ".txt");
-            string readLine;
-            while((readLine = reader.ReadLine()) != null)
-            {
-                //Ein Array in dem die Strings gespeichert werden, die durch ";" getrennt wurden 
-                string[] stringArr = readLine.Split(';');
-                //Durch die Daten im Array, wird eine FileCard erzeugt
-                FileCard card = new FileCard(Convert.ToInt32(stringArr[0]), stringArr[1], stringArr[2]);
+        //public void loadCards()
+        //{
+        //    //Erstellt einen Reader der eine Datei am angegebenen Pfad ausliest
+        //    System.IO.StreamReader reader = new System.IO.StreamReader(@"C:\Users\AOT\source\repos\Lernsoftware\WI18C\Lernsoftware\Programm\Lernsoftware\" + this.RegisterName + ".txt");
+        //    string readLine;
+        //    while((readLine = reader.ReadLine()) != null)
+        //    {
+        //        //Ein Array in dem die Strings gespeichert werden, die durch ";" getrennt wurden 
+        //        string[] stringArr = readLine.Split(';');
+        //        //Durch die Daten im Array, wird eine FileCard erzeugt
+        //        FileCard card = new FileCard(Convert.ToInt32(stringArr[0]), stringArr[1], stringArr[2]);
 
-                //Prüfung, ob die FileCard "card" schon existiert 
-                bool isInList = false;
-                foreach(var fileCard in FileCards)
-                {
-                    if(fileCard.Equals(card))
-                    {
-                        isInList = true;
-                        break;
-                    }
-                }
+        //        //Prüfung, ob die FileCard "card" schon existiert 
+        //        bool isInList = false;
+        //        foreach(var fileCard in FileCards)
+        //        {
+        //            if(fileCard.Equals(card))
+        //            {
+        //                isInList = true;
+        //                break;
+        //            }
+        //        }
 
-                if(isInList == false)
-                {
-                    fileCards.Add(card);
-                }      
-            }
-            reader.Close();           
-            setIdCounter();
-        }
-//still to do...
-        public void changeName(string newName)
-        {
-
-        }
-
-        public void mixFileCard()
-        {
-
-        }
-
-        public Register Register(Register register)
-        {
-            return register;
-        }
-        public int rightCounter()
-        {
-            return counter;
-        }
-        public int tryCounter()
-        {
-            return counter;
-        }
+        //        if(isInList == false)
+        //        {
+        //            fileCards.Add(card);
+        //        }      
+        //    }
+        //    reader.Close();           
+        //    setIdCounter();
+        //}
     }
 }
