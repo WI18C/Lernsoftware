@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Lernsoftware.ucSettingsNewFileCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lernsoftware"
+             mc:Ignorable="d" 
+            d:DesignHeight="1200" d:DesignWidth="670" Width="1200" Height="670">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="111*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="SETTINGS - FILE CARDS" Foreground="#B2D6A5" FontSize="30" VerticalAlignment="Bottom" Margin="80,0" Height="49"/>
+        <Border Grid.Row="1" BorderBrush="#FF7030A0" BorderThickness="5" CornerRadius="10" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,0"  Height="480" Width="850">
+            <Grid Height="470" Width="850">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="350"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label Content="Question" FontSize="18" VerticalAlignment="Center" Margin="40,0" Width="150"/>
+                        <TextBox x:Name="txtPutQuestion" VerticalContentAlignment="Center" FontSize="18" Width="500" Height="auto" TextWrapping="Wrap">
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua?
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Label Content="Answer" FontSize="18" VerticalAlignment="Center" Margin="40,0" Width="150"/>
+                        <TextBox x:Name="txtPutAnswer" VerticalContentAlignment="Center" FontSize="18" Width="500" Height="auto" TextWrapping="Wrap">
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua?
+                        </TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="195"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnSettingsDelete" Grid.Column="0" HorizontalAlignment="Right"  FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="50" Foreground="#FF7030A0">
+                        <Grid Width="110">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70*"/>
+                                <ColumnDefinition Width="30*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\ooops_30.png"/>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="DELETE"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="btnSettingsNext" Content="NEXT" Grid.Column="1" FontSize="18" Foreground="White" BorderBrush="#FF7030A0" Background="#B2D6A5" Padding="10" BorderThickness="3" Width="178" Height="50"/>
+                    <Button x:Name="btnSettingsFinished" Grid.Column="2" HorizontalAlignment="Left"  FontSize="18" BorderBrush="#B2D6A5" Background="White" Padding="10" BorderThickness="3" Width="178" Height="50" Foreground="#B2D6A5">
+                        <Grid Width="110">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\Haken_30.png"/>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="FINISHED"/>
+                        </Grid>
+                    </Button>
+                    <TextBox x:Name="txtSettingsFileCounter" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30,35" FontSize="18" Text="1"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

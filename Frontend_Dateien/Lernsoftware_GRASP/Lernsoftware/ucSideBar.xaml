@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Lernsoftware.ucSideBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lernsoftware"
+             mc:Ignorable="d" 
+             d:DesignHeight="440" d:DesignWidth="336" VerticalAlignment="Bottom">
+    <Grid Background="White">
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition Height="55"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Content="REGISTER" Foreground="#B2D6A5" FontSize="30"/>
+            <Button x:Name="btnRegister1" Grid.Row="1" Content="1" FontSize="18" Foreground="White" BorderBrush="#FF7030A0" Background="#B2D6A5" Padding="5" BorderThickness="3" Margin="5" Width="178"/>
+            <Button x:Name="btnRegister2" Grid.Row="2" Content="2" FontSize="18" Foreground="White" BorderBrush="#FF7030A0" Background="#B2D6A5" Padding="5" BorderThickness="3" Margin="5" Width="178"/>
+            <Button x:Name="btnRegister3" Grid.Row="3" Content="3" FontSize="18" Foreground="White" BorderBrush="#FF7030A0" Background="#B2D6A5" Padding="5" BorderThickness="3" Margin="5" Width="178"/>
+            <Button x:Name="btnRegister4" Grid.Row="4" Content="4" FontSize="18" Foreground="White" BorderBrush="#FF7030A0" Background="#B2D6A5" Padding="5" BorderThickness="3" Margin="5" Width="178"/>
+            <Button x:Name="btnRegister5" Grid.Row="5" Content="5" FontSize="18" Foreground="White" BorderBrush="#FF7030A0" Background="#B2D6A5" Padding="5" BorderThickness="3" Margin="5" Width="178"/>
+            <Button x:Name="btnRegister6" Grid.Row="6" Content="6" FontSize="18" Foreground="White" BorderBrush="#FF7030A0" Background="#B2D6A5" Padding="5" BorderThickness="3" Margin="5" Width="178"/>
+        </Grid>
+    </Grid>
+</UserControl>

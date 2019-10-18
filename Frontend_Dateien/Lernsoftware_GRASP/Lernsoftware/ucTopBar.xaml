@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Lernsoftware.ucTopBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lernsoftware"
+             mc:Ignorable="d" 
+             d:DesignHeight="169.6" d:DesignWidth="1377.6">
+    <Grid>
+        <Grid Grid.Row="0" Background="#FF7030A0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="btnHome" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="54" BorderThickness="0"  Foreground="White" FontSize="18" Click="ChangePageTo_Click" Background="#FF7030A0" OpacityMask="Black" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\home_30.png"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="    HOME"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="1" x:Name="btnTraining" Background="#FF7030A0" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="54" BorderThickness="0"  Foreground="White" FontSize="18" Click="ChangePageTo_Click">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\training_30.png"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="   TRAINING"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="2" x:Name="btnSettings" Background="#FF7030A0" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="54" BorderThickness="0"  Foreground="White" FontSize="18"  Click="ChangePageTo_Click">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\settings_30.png"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="    SETTINGS"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="3" x:Name="btnNewProject" Background="#FF7030A0" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="54" BorderThickness="0"  Foreground="White" FontSize="18" Click="ChangePageTo_Click">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\newProject_30.png"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="        NEW PROJECT"/>
+                </Grid>
+            </Button>
+            <Button Grid.Column="4" x:Name="btnSignOut" Background="#FF7030A0" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="250" Height="54" BorderThickness="0"  Foreground="White" FontSize="18" Click="BtnSignOut_Click">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\signOut_30.png"/>
+                    <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="   SIGN OUT"/>
+                </Grid>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Lernsoftware.ucFileCardAnswer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lernsoftware"
+             mc:Ignorable="d" 
+             d:DesignHeight="1200" d:DesignWidth="670" Width="1200" Height="670">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="111*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="PROJECT 1" Foreground="#B2D6A5" FontSize="30" VerticalAlignment="Bottom" Margin="80,0" Height="49"/>
+        <Border Grid.Row="1" BorderBrush="#FF7030A0" BorderThickness="5" CornerRadius="10" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80,0"  Height="480" Width="850">
+            <Grid Height="470" Width="850">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="350"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0" FontSize="18" Width="550" Height="auto" VerticalAlignment="Center" TextWrapping="Wrap">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua?
+                </TextBox>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="195"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnOoops" Grid.Column="0" HorizontalAlignment="Right"  FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="50" Foreground="#FF7030A0">
+                        <Grid Width="110">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70*"/>
+                                <ColumnDefinition Width="30*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\ooops_30.png"/>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="OOOPS"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="btnQuestion" Content="QUESTION" Grid.Column="1" FontSize="18" Foreground="White" BorderBrush="#FF7030A0" Background="#B2D6A5" Padding="10" BorderThickness="3" Width="178" Height="50"/>
+                    <Button x:Name="btnMadeIt" Grid.Column="2" HorizontalAlignment="Left"  FontSize="18" BorderBrush="#B2D6A5" Background="White" Padding="10" BorderThickness="3" Width="178" Height="50" Foreground="#B2D6A5">
+                        <Grid Width="110">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Source="D:\Ablage\K.00_Knowledge\K.03_Studium\2018_DHBW\Semester-3\Fallstudie_Lernsoftware\Lernsoftware\Dateien\icons\Haken_30.png"/>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="MADE IT"/>
+                        </Grid>
+                    </Button>
+                    <TextBox x:Name="txtFileCounter" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30,35" FontSize="18" Text="1 / 25"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
