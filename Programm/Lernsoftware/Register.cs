@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -115,7 +115,7 @@ namespace Lernsoftware
         }
 #endregion
 
-
+#region functions
         public void deleteFileCard(int fileCardId)
         {
             foreach(FileCard fileCard in fileCards)
@@ -208,20 +208,24 @@ namespace Lernsoftware
             reader.Close();           
             setIdCounter();
         }
-//still to do...
+
         public void changeName(string newName)
         {
-
+            registerName = newName;
         }
 
-        public void mixFileCard()
-        {
-
-        }
-
-        public Register Register(Register register)
-        {
-            return register;
+        //Sortiert FileCards nach Zufallsprinzip neu in Liste ein
+        public static void Shuffle<FileCard>(this List<FileCard> fileCards) {
+        int n = fileCards.Count;
+        Random rnd = new Random();
+            while (n > 1) {
+                int k = (rnd.Next(0, n) % n);
+                n--;
+                FileCard value = fileCards[k];
+                fileCards[k] = fileCards[n];
+                fileCards[n] = value;
+            }
+            return fileCards;
         }
 
         public int rightCounter()
@@ -235,3 +239,4 @@ namespace Lernsoftware
         }
     }
 }
+#endregion
