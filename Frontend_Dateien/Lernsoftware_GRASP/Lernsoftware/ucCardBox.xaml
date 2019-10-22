@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Lernsoftware.ucCardBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lernsoftware"
+             mc:Ignorable="d" 
+              d:DesignHeight="1373" d:DesignWidth="670" Width="1373" Height="670">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="111*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="PROJECT 1" Foreground="#B2D6A5" FontSize="30" VerticalAlignment="Bottom" Margin="80,0,0,10"/>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="17*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="GENERAL" FontSize="18" Foreground="#B2D6A5" Margin="80,20,29.8,8"/>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="40,40,29.8,8">
+                <Label Content="Registers:" FontSize="18" Margin="40,15,10,0"/>
+                <TextBox x:Name="txtNrOfRegisters" VerticalAlignment="Top" Margin="20,15" FontSize="18" Width="328" Height="38"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="40,90,29.8,8">
+                <Label Content="File Cards:" FontSize="18" Margin="40,15,10,0"/>
+                <TextBox x:Name="txtNrOfTotalFileCards" VerticalAlignment="Top" Margin="14,15" FontSize="18" Width="328" Height="38"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Margin="0,4,-0.2,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="TRAININGS" FontSize="18" Foreground="#B2D6A5" Padding="80,0,0,0"/>
+                    <Label Content="SUCCESS" FontSize="18" Foreground="#B2D6A5" Padding="130,0,0,0"/>
+                    <Label Content="FILE CARDS" FontSize="18" Foreground="#B2D6A5" Padding="80,0,0,0"/>
+                    <Label Content="LAST PRACTICED" FontSize="18" Foreground="#B2D6A5" Padding="80,0,0,0"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Total:" FontSize="18" Foreground="Black" Width="170" Padding="80,0,0,0"/>
+                    <TextBox x:Name="txtRoundsR1" FontSize="18" Width="50" Height="auto" Margin="40,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtSuccessR1" FontSize="18" Width="70" Height="auto" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtNrOfFileCardsR1" FontSize="18" Width="70" Height="auto" Margin="90,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtLastPracticedR1" FontSize="18" Width="150" Height="auto" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Register 1:" FontSize="18" Foreground="Black" Width="170" Padding="80,0,0,0"/>
+                    <TextBox x:Name="txtRoundsR2" FontSize="18" Width="50" Height="auto" Margin="40,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtSuccessR2" FontSize="18" Width="70" Height="auto" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtNrOfFileCardsR2" FontSize="18" Width="70" Height="auto" Margin="90,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtLastPracticedR2" FontSize="18" Width="150" Height="auto" VerticalContentAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Register 2:" FontSize="18" Foreground="Black" Width="170" Padding="80,0,0,0"/>
+                    <TextBox x:Name="txtRoundsR3" FontSize="18" Width="50" Height="auto" Margin="40,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtSuccessR3" FontSize="18" Width="70" Height="auto" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtNrOfFileCardsR3" FontSize="18" Width="70" Height="auto" Margin="90,0" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="txtLastPracticedR3" FontSize="18" Width="150" Height="auto" VerticalContentAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

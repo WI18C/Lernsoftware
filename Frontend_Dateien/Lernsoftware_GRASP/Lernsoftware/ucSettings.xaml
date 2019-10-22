@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Lernsoftware.ucSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lernsoftware"
+             mc:Ignorable="d" 
+              d:DesignHeight="1200" d:DesignWidth="670" Width="1200" Height="670">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="111*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="SETTINGS" Foreground="#B2D6A5" FontSize="30" VerticalAlignment="Bottom" Margin="80,0,0,10"/>
+    </Grid>
+</UserControl>

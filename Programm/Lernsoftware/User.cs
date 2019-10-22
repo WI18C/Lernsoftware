@@ -14,6 +14,17 @@ namespace Lernsoftware
         private string password; 
         private List<CardBox> cardBoxList;
 
+        public User(int userID, string username)
+        {
+            UserId = userID;
+            Username = username;
+        }
+
+        public User(string username)
+        {
+            Username = username;
+        }
+
         public int UserId
         {
             get => userId;

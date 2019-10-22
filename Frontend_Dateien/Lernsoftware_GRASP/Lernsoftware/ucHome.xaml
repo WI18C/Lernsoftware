@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Lernsoftware.ucHome"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lernsoftware"
+             mc:Ignorable="d" 
+             d:DesignHeight="1200" d:DesignWidth="670" Width="1200" Height="670">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="111*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="HOME" Foreground="#B2D6A5" FontSize="30" VerticalAlignment="Bottom" Margin="80,0,0,10"/>
+        <Grid Grid.Row="1" Height="400" Width="800" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="80,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" x:Name="btnProject1" Content="Project 1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+                <Button Grid.Row="1" x:Name="btnProject6" Content="Project 6"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" x:Name="btnProject2" Content="Project 2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+                <Button Grid.Row="1" x:Name="btnProject7" Content="Project 7" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" x:Name="btnProject3" Content="Project 3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+                <Button Grid.Row="1" x:Name="btnProject8" Content="Project 8" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" x:Name="btnProject4" Content="Project 4" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+                <Button Grid.Row="1" x:Name="btnProject9" Content="Project 9" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+            </Grid>
+            <Grid Grid.Column="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" x:Name="btnProject5" Content="Project 5" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+                <Button Grid.Row="1" x:Name="btnProject10" Content="Project 10" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18" BorderBrush="#FF7030A0" Background="White" Padding="10" BorderThickness="3" Width="178" Height="178" Foreground="#FF7030A0"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
