@@ -14,31 +14,35 @@ namespace Lernsoftware
         private string cardBoxName;
         private int containingRegisters;
         private int containingFileCards;
-       // private int containingFileCards;
         private List<Register> registers;
         private LearningUnit learningUnit;
         private CardBoxDesign cardBoxDesign;
 
+        static MySQLDao connection = new MySQLDao();
+
         public CardBox(string cardboxName)
         {
-            CardBoxId = CbIdCounter;
-            CbIdCounter++;
-            CardBoxName = cardboxName;
+            cardBoxId = cbIdCounter;
+            cbIdCounter++;
+            cardBoxName = cardboxName;
         }
 
         // Der Name einer Card Box wird geändert
-        public void changeName(string newName)
+        public void changeName(CardBox cardBox, string newName)
         {
-            this.cardBoxName = newName;
+            connection.updateCardboxInDB(cardBox, newName);
         }
 
         // Addiert die Erfolgszähler aller Register, um den Gesamterfolg zu ermitteln und gibt int-Wert zurück
         public int countRegistersSuccess()
         {
+            List<Register> registers = connection.loadRegistersInCardboxFromDB(this);
+
             foreach(var Register in registers)
             {
-                cardBoxSuccessCounter = cardBoxSuccessCounter + Register.counterSuccess;
+                cardBoxSuccessCounter = cardBoxSuccessCounter + (Register.counterSuccess / Register.Counter);
             }
+            cardBoxSuccessCounter = cardBoxSuccessCounter / registers.Count;
             return cardBoxSuccessCounter;
         }
 
