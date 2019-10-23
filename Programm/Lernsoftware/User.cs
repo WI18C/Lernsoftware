@@ -81,8 +81,7 @@ namespace Lernsoftware
         }
         public void createNewCardBox(int UserId, string name)
         {
-            CardBox cardbox = new CardBox(name);
-            connection.saveCardboxInDB(UserId, cardbox.CardBoxName); 
+            connection.saveCardboxInDB(UserId, name);
         }
         public Boolean deleteCardBox(string name)
         {
@@ -140,6 +139,16 @@ namespace Lernsoftware
             else
                 return false;
         }
+
+        public CardBox getCardboxById(int cardboxId,int userId)
+        {
+            List<CardBox> cardBoxes = connection.loadCardBoxesInUserFromDB(userId);
+            CardBox cardbox = (from c in cardBoxes
+                               where c.CardBoxId == cardboxId
+                               select c).FirstOrDefault(); 
+            return cardbox; 
+        }
+
 
 
     }

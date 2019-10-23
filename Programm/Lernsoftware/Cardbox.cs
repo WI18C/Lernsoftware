@@ -20,11 +20,10 @@ namespace Lernsoftware
 
         static MySQLDao connection = new MySQLDao();
 
-        public CardBox(string cardboxName)
+        public CardBox(int cardBoxId, string cardboxName)
         {
-            cardBoxId = cbIdCounter;
-            cbIdCounter++; 
-            cardBoxName = cardboxName;
+            CardBoxId = cardBoxId;
+            CardBoxName = cardboxName;
         }
 
         // Der Name einer Card Box wird geändert
@@ -34,34 +33,37 @@ namespace Lernsoftware
         }
 
         // Addiert die Erfolgszähler aller Register, um den Gesamterfolg zu ermitteln und gibt int-Wert zurück
-        public int countRegistersSuccess()
+        public int countRegistersSuccess(CardBox cardBox)
         {
-            List<Register> registers = connection.loadRegistersInCardboxFromDB(this);
+            List<Register> registers = connection.loadRegistersInCardboxFromDB(cardBox.cardBoxId);
 
             foreach(var Register in registers)
             {
-                cardBoxSuccessCounter = cardBoxSuccessCounter + (Register.counterSuccess / Register.Counter);
+                cardBoxSuccessCounter = cardBoxSuccessCounter + (Register.CounterSuccess / Register.Counter);
             }
             cardBoxSuccessCounter = cardBoxSuccessCounter / registers.Count;
             return cardBoxSuccessCounter;
         }
 
         // Neues Register wird hinzugefügt (Soll es eine maximale Anzahl geben?)
-        public Boolean addRegister()
+        public void addRegister(CardBox cardBox, string name)
         {
-            registers.Add(new Register("h"));
-            return false; 
+            connection.saveRegisterInDB(cardBox.cardBoxId, name);
         }
 
         // Schiebt FileCard ein Register weiter
         
-        public void moveFileCard(int movingFileCardId)
+        /*public void moveFileCard(CardBox cardBox, int registerId, int fileCardId)
         {
+            List<Register> registers = connection.loadRegistersInCardboxFromDB(cardBox);
+
             foreach(var Register in registers)
             {
+                List<FileCard> fileCards = connection.loadFilecardsInResgisterFromDB(registerId);
+
                 foreach(var FileCard in fileCards)
                 {
-                    if(FileCard.fileCardId == movingFileCardId)
+                    if(FileCard.fileCardId == fileCardId)
                     {
                         if(Register.RIdCounter > Register.RegisterId)
                             {
@@ -74,10 +76,10 @@ namespace Lernsoftware
                     }
                 }
             }
-        }
+        }*/
         
         //Löscht FileCard aus dem Register
-        public void deleteFileCard(int deletingFileCard)
+        /*public void deleteFileCard(int deletingFileCard)
         {
             foreach(var Register in registers)
             {
@@ -90,25 +92,24 @@ namespace Lernsoftware
                     else{}
                 }
             }
-        }
+        }*/
        
         // Neue FileCard erstellen
-        public FileCard createFileCard(string fquestion, string fanswer)
+        public void createFileCard(string fquestion, string fanswer, int registerId)
         {
             FileCard neueFileCard = new FileCard(fquestion, fanswer);
-
-            return neueFileCard;
+            connection.saveSingleFileCardinDB(neueFileCard, registerId);
         }
         
-        public void addNewFileCardIntoRegister(int regId)
+        /*public void addNewFileCardIntoRegister(int regId)
         {
             if(Register.registerId == regId)
             {
                 Register.fileCards.Add(createFileCard());
             }
-        }
+        }*/
         
-        public Register getRegisterById(int regId)
+        /*public Register getRegisterById(int regId)
         {
             foreach(var Register in registers)
             {
@@ -118,7 +119,7 @@ namespace Lernsoftware
                 }
                 else{}
             }
-        }
+        }*/
         
         public int CardBoxId
         {
