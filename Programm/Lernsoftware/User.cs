@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,11 @@ namespace Lernsoftware
     class User
     {
         private int userId; 
-        private static int idCounter = 0; //DB??
+        private static int idCounter = 0;
         private string username;
         private string password; 
         private List<CardBox> cardBoxList;
+        static MySQLDao connection = new MySQLDao();
 
         public User(int userID, string username)
         {
@@ -23,6 +25,10 @@ namespace Lernsoftware
         public User(string username)
         {
             Username = username;
+        }
+
+        public User()
+        {
         }
 
         public int UserId
@@ -45,83 +51,71 @@ namespace Lernsoftware
             get => cardBoxList;
             set => cardBoxList = value;
         }
-        public User (string name, string pwd)
+        
+        public Boolean changeCardBox (User user, string alt, string neu)
         {
-            username = name;
-            password = pwd;
-            userId = idCounter;
-            idCounter++; 
-            cardBoxList = new List<CardBox>(); 
-        }
-        public void changeCardBox (string alt, string neu)
-        {
-            //Datenbank
-        }
-        public Boolean changePassword (string alt, string neu)
-        {
-            //Datenbank
-            return true; 
-        }
-        public Boolean changeUsername (string alt, string neu)
-        {
-            //Datenbank
-            return true; 
-        }
-        public void createNewCardBox(string name)
-        {
-            CardBox cardbox = new CardBox(name);
-            if (cardBoxList.Contains(cardbox))
-            { //FEhlermeldung breits vorhanden, erstezen?
-                    
-            }
-            else
-            {
-                cardBoxList.Add(cardbox);
-                //Erfolgsmeldung
-            }
-            //Datenbank
-        }
-        public void deleteCardBox(string name)
-        {
-            //Auswahl aus Liste oder wird Name eingegeben?
-            CardBox cardbox = (from c in cardBoxList
-                               where c.CardBoxName == name
-                               select c).FirstOrDefault();
-            
+            List<CardBox> cardBoxes = connection.loadCardBoxesInUserFromDB(user.UserId);
+            CardBox cardbox = (from c in cardBoxes
+                               where c.CardBoxName == alt
+                               select c).FirstOrDefault(); 
             if (cardbox == null)
             {
-                //Fehlermeldung: nicht vorhanden
+                return false; 
             }
-
             else
             {
-                cardBoxList.Remove(cardbox);
-                //Erfolgmeldung
+                connection.updateCardboxInDB(cardbox, neu);
+                return true; 
             }
+            //where statement mit string alt = name; danach cardbox übergeben, ändern und neu speichern
+
+        }
+        public void changePassword (User user, string neu)
+        {
+            connection.updateUser(user, false, neu);
+        }
+        public void changeUsername (User user, string neu)
+        {   
+            //Prüfung ob Username bereits vorhanden ist
+            connection.updateUser(user, true, neu); 
+        }
+        public void createNewCardBox(int UserId, string name)
+        {
+            CardBox cardbox = new CardBox(name);
+            connection.saveCardboxInDB(UserId, cardbox.CardBoxName); 
+        }
+        public Boolean deleteCardBox(string name)
+        {
+            //Datenbank
+            return true; 
         }
         public Boolean deleteUser(string name)
         {
             //Datenbank
             return true; 
         }
-        public Boolean loginUser(string name, string pwd)
+        public User loginUser(string name, string pwd)
         {
-            // Datenbank
-            return true; 
-        }
-        //public void newUser(string name, string pwd)
-        //{
-        //    User neu = new User(name, pwd);
-        //    if //User wo vorhanden?
-        //    { //FEhlermeldung breits vorhanden, erstezen?
+            User user = connection.userLogIn(name, pwd);
+            
+            try
+            {
+                user.CardBoxList = connection.loadCardBoxesInUserFromDB(user.UserId);
+                return user;
+            }
 
-        //    }
-        //    else
-        //    {
-        //        //Erfolgsmeldung, Speichern?? 
-        //    }
-        //    //Datenbank
-        //}
+            catch (Exception ex)
+            {
+                return null; 
+            }
+        }
+        public User newUser(string name, string pwd)
+        {
+            User user = connection.CreateNewUser(name, pwd);
+            user.CardBoxList = connection.loadCardBoxesInUserFromDB(user.UserId);
+            return user; 
+            //if schon vorhanden? 
+        }
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())

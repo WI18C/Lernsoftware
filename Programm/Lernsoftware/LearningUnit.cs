@@ -36,7 +36,7 @@ namespace Lernsoftware
             learningUnitId = idCounter;
             idCounter++;
             cardBox = cb;
-            averageSuccessCB = cardBox.CounterSuccess; //in CB ergänzen
+            averageSuccessCB = cardBox.countRegistersSuccess(); //in CB ergänzen
             registerList = cardBox.Registers;
         }
         // Methode für den Aufruf der Register und einzelnen Averages

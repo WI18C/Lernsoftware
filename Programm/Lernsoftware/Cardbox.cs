@@ -47,12 +47,14 @@ namespace Lernsoftware
         }
 
         // Neues Register wird hinzugefügt (Soll es eine maximale Anzahl geben?)
-        //public boolean addRegister()
-        //{
-        //    registers.Add(new Register());
-        //}
+        public Boolean addRegister()
+        {
+            registers.Add(new Register("h"));
+            return false; 
+        }
 
         // Schiebt FileCard ein Register weiter
+        
         public void moveFileCard(int movingFileCardId)
         {
             foreach(var Register in registers)
@@ -73,7 +75,7 @@ namespace Lernsoftware
                 }
             }
         }
-
+        
         //Löscht FileCard aus dem Register
         public void deleteFileCard(int deletingFileCard)
         {
@@ -89,7 +91,7 @@ namespace Lernsoftware
                 }
             }
         }
-
+       
         // Neue FileCard erstellen
         public FileCard createFileCard(string fquestion, string fanswer)
         {
@@ -97,7 +99,7 @@ namespace Lernsoftware
 
             return neueFileCard;
         }
-
+        
         public void addNewFileCardIntoRegister(int regId)
         {
             if(Register.registerId == regId)
@@ -105,7 +107,7 @@ namespace Lernsoftware
                 Register.fileCards.Add(createFileCard());
             }
         }
-
+        
         public Register getRegisterById(int regId)
         {
             foreach(var Register in registers)
@@ -117,7 +119,7 @@ namespace Lernsoftware
                 else{}
             }
         }
-
+        
         public int CardBoxId
         {
             get => cardBoxId;

@@ -59,7 +59,7 @@ namespace Lernsoftware
             get => counterSuccess;
             set => counterSuccess = value;
         }
-
+        
         public FileCard getFileCardById(int cardId)
         {
             foreach(var FileCard in fileCards)
@@ -71,7 +71,7 @@ namespace Lernsoftware
                 else{}
             }
         }
-
+        
 
         public int RegisterId
         {
@@ -84,13 +84,13 @@ namespace Lernsoftware
             get => registerName;
             set => registerName = value;
         }
-
+        
         public int ContainingFileCards
         {
             get => containingFileCards;
             set => containingFileCards = value;
         }
-
+        
         internal List<FileCard> FileCards
         {
             get => fileCards;
@@ -213,7 +213,7 @@ namespace Lernsoftware
         {
             registerName = newName;
         }
-
+        
         //Sortiert FileCards nach Zufallsprinzip neu in Liste ein
         public static void Shuffle<FileCard>(this List<FileCard> fileCards) {
         int n = fileCards.Count;
@@ -227,7 +227,7 @@ namespace Lernsoftware
             }
             return fileCards;
         }
-
+        
         public int rightCounter()
         {
             return counter;
