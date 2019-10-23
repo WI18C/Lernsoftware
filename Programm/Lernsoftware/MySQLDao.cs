@@ -344,7 +344,7 @@ namespace Lernsoftware
             }
             connection.Close();
         }
-
+        
         public void updateCardboxInDB(CardBox cardBox, string cardBoxName)
         {
             MySqlConnection connection = getConnection("root", "");
