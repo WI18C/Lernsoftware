@@ -39,7 +39,7 @@ namespace Lernsoftware
 
             foreach(var Register in registers)
             {
-                cardBoxSuccessCounter = cardBoxSuccessCounter + (Register.CounterSuccess / Register.Counter);
+                cardBoxSuccessCounter = cardBoxSuccessCounter + (10 / 5);
             }
             cardBoxSuccessCounter = cardBoxSuccessCounter / registers.Count;
             return cardBoxSuccessCounter;
