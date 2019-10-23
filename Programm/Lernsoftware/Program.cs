@@ -15,10 +15,24 @@ namespace Lernsoftware
         static void Main()
         {
             
-           Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1()); 
+            Application.Run(new Form1());
+
+            /*Testing CardBox Klasse
+
+            // Test Methode changeName (CardBox):
+            User user = new User();
+            user = user.loginUser("Albert", "1234");
+            user.createNewCardBox(user.UserId, "Schalke"); 
+
+            CardBox tobias = user.getCardboxById(6, user.UserId);
+
+            Console.WriteLine(tobias.CardBoxName);
+            tobias.changeName(tobias, "Dönerteller");
+            Console.WriteLine(tobias.CardBoxName);
             
+            */
 
             /* Testing User Klasse 
 
