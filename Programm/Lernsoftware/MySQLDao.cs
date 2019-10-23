@@ -466,6 +466,28 @@ namespace Lernsoftware
             }
         }
 
+        public void saveLearningUnitInDB(LearningUnit learningUnit, int userId)
+        {
+            MySqlConnection connection = getConnection("root", "");
+
+            string commandstring = "INSERT INTO `statistics` (`stat_ID`, `user_ID`, `stat_right`, `stat_wrong`, `stat_time`, `stat_round`) " +
+                                   "VALUES(NULL, '" + userId + "', '" + learningUnit.AverageSuccessCB + "', '0', '" + learningUnit.Time + "', '0');";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            connection.Close();
+        }
+
 
     }
 }
