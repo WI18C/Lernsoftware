@@ -109,19 +109,19 @@ namespace Lernsoftware
             // Datenbank
             return true; 
         }
-        public void newUser(string name, string pwd)
-        {
-            User neu = new User(name, pwd);
-            if //User wo vorhanden?
-            { //FEhlermeldung breits vorhanden, erstezen?
+        //public void newUser(string name, string pwd)
+        //{
+        //    User neu = new User(name, pwd);
+        //    if //User wo vorhanden?
+        //    { //FEhlermeldung breits vorhanden, erstezen?
 
-            }
-            else
-            {
-                //Erfolgsmeldung, Speichern?? 
-            }
-            //Datenbank
-        }
+        //    }
+        //    else
+        //    {
+        //        //Erfolgsmeldung, Speichern?? 
+        //    }
+        //    //Datenbank
+        //}
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
