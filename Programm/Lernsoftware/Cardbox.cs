@@ -23,7 +23,7 @@ namespace Lernsoftware
         public CardBox(string cardboxName)
         {
             cardBoxId = cbIdCounter;
-            cbIdCounter++;
+            cbIdCounter++; 
             cardBoxName = cardboxName;
         }
 

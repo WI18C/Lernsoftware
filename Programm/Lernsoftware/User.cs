@@ -89,6 +89,14 @@ namespace Lernsoftware
             //Datenbank
             return true; 
         }
+        public CardBox getCardboxById(int cardboxId,int userId)
+        {
+            List<CardBox> cardBoxes = connection.loadCardBoxesInUserFromDB(userId);
+            CardBox cardbox = (from c in cardBoxes
+                               where c.CardBoxId == cardboxId
+                               select c).FirstOrDefault(); 
+            return cardbox; 
+        }
         public Boolean deleteUser(string name)
         {
             //Datenbank

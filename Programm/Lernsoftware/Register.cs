@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Lernsoftware
 {
-    class Register
-    {
+   class Register
+    { 
 #region parameter
         private int containingFileCards;
         private int counter;
@@ -84,13 +84,13 @@ namespace Lernsoftware
             get => registerName;
             set => registerName = value;
         }
-        /*
+        
         public int ContainingFileCards
         {
             get => containingFileCards;
             set => containingFileCards = value;
         }
-        */
+        
         internal List<FileCard> FileCards
         {
             get => fileCards;
@@ -164,7 +164,7 @@ namespace Lernsoftware
             }
             FileCard.IdCounter = highestId;
         }
-
+        
         public void saveListOfCards(List<FileCard> fileCards)
         {
             System.IO.StreamWriter writer = new System.IO.StreamWriter(@"C:\Users\AOT\source\repos\Lernsoftware\WI18C\Lernsoftware\Programm\Lernsoftware\" + this.RegisterName + ".txt");
@@ -176,7 +176,7 @@ namespace Lernsoftware
             }
             writer.Close();
         }
-
+        
         public void loadCards()
         {
             //Erstellt einen Reader der eine Datei am angegebenen Pfad ausliest
@@ -208,7 +208,7 @@ namespace Lernsoftware
             reader.Close();           
             setIdCounter();
         }
-
+        
         public void changeName(string newName)
         {
             registerName = newName;
@@ -236,7 +236,7 @@ namespace Lernsoftware
         public int tryCounter()
         {
             return counter;
-        }
-    }
-}
+        } 
+    } 
+} 
 #endregion

@@ -466,6 +466,8 @@ namespace Lernsoftware
             }
         }
 
+
+        //==============================================Learning Unit========================================================
         public void saveLearningUnitInDB(LearningUnit learningUnit, int userId)
         {
             MySqlConnection connection = getConnection("root", "");
@@ -487,6 +489,48 @@ namespace Lernsoftware
             }
             connection.Close();
         }
+
+        public List<LearningUnit> loadLearningUnitsFromDB(int userId)
+        {
+            MySqlConnection connection = getConnection("root", "");
+
+            string commandstring = "SELECT stat_ID, user_ID, stat_right, stat_wrong, stat_rime, stat_round " +
+                                   "FROM `statistics` WHERE user_ID = " + userId + ";";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    MySqlDataReader reader = command.ExecuteReader();
+
+
+                    if(reader.HasRows)
+                    {
+                        List<LearningUnit> learnings = new List<LearningUnit>();
+                        while(reader.Read())
+                        {
+                            LearningUnit learning = new LearningUnit(reader.GetInt32(0),reader.GetInt32(1),reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4),reader.GetInt32(5));
+                            learnings.Add(learning);
+                        }
+
+                        connection.Close();
+                        return learnings;
+                    }
+
+                    else
+                        return null;
+                }
+
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+            return null;
+        }
+
 
 
     }

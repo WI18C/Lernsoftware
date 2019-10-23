@@ -9,11 +9,10 @@ namespace Lernsoftware
     class LearningUnit
     {
         private int averageSuccessCB;
-        private DateTime time;
+        private String date;
         private int learningUnitId;
         CardBox cardBox;
-        private List<Register> registerList;
-        private int round; // Attribut muss in Register oder Cardbox
+        private int round; 
         static MySQLDao connection = new MySQLDao();
         public int AverageSuccessCB
         {
@@ -31,34 +30,51 @@ namespace Lernsoftware
             set => round = value; 
         }
 
-        public DateTime Time
+        public String Time
         {
             get => time;
             set => time = value; 
         }
+        public CardBox CardBox
+        {
+            get => cardBox;
+            set => cardBox = value; 
+        }
         public LearningUnit(CardBox cb)
         {
-            time = DateTime.Now;
-            learningUnitId = idCounter;
-            idCounter++;
+            time = getDate(); 
             cardBox = cb;
-            averageSuccessCB = cardBox.countRegistersSuccess(); //in CB ergänzen
-            registerList = cardBox.Registers;
+            averageSuccessCB = cardBox.countRegistersSuccess(cardBox);
         }
-
         public void save(LearningUnit learningUnit, int userId)
         {
             connection.saveLearningUnitInDB(learningUnit, userId);
         }
-        // Methode für den Aufruf der Register und einzelnen Averages
-        public void showRegisters()
+
+        public String getDate ()
         {
-            foreach (Register register in registerList)
-            {
-                Console.WriteLine(register.RegisterName + ": " +
-                    (register.Counter/register.CounterSuccess)+"%");
-            }
+            DateTime dt = new DateTime();
+            return String.Format("{0:MM/dd/yyyy}",dt);
         }
+        
+        public List<LearningUnit> GetLearningUnits (int userId)
+        {
+            return connection.loadLearningUnitsFromDB(userId);
+        }
+
+        /*
+        public List<String> getRegisterNames(CardBox cardBox)
+        {
+           List<Register> registers = cardBox.Registers; 
+           List<string> names = new List<string>(); 
+           foreach (Register register in registers)
+            {
+                names.Add(register.RegisterName);
+            }
+           return names; 
+        }
+        */
+       
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
