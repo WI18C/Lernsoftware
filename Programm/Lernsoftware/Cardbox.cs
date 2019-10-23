@@ -109,17 +109,14 @@ namespace Lernsoftware
             }
         }*/
         
-        /*public Register getRegisterById(int regId)
+        public Register getRegisterById(int registerId, int cardBoxId)
         {
-            foreach(var Register in registers)
-            {
-                if(Register.RegisterId == regId)
-                {
-                    return Register;
-                }
-                else{}
-            }
-        }*/
+            List<Register> registers = connection.loadRegistersInCardboxFromDB(cardBoxId);
+            Register register = (from c in registers
+                               where c.RegisterId == registerId
+                               select c).FirstOrDefault(); 
+            return register;
+        }
         
         public int CardBoxId
         {

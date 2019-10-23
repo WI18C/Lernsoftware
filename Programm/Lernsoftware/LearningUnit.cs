@@ -9,7 +9,7 @@ namespace Lernsoftware
     class LearningUnit
     {
         private int averageSuccessCB;
-        private String date;
+        private String time;
         private int learningUnitId;
         CardBox cardBox;
         private int round; 
@@ -57,10 +57,10 @@ namespace Lernsoftware
             return String.Format("{0:MM/dd/yyyy}",dt);
         }
         
-        public List<LearningUnit> GetLearningUnits (int userId)
+        /*public List<LearningUnit> GetLearningUnits (int userId)
         {
             return connection.loadLearningUnitsFromDB(userId);
-        }
+        }*/
 
         /*
         public List<String> getRegisterNames(CardBox cardBox)

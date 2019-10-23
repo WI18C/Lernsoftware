@@ -15,9 +15,9 @@ namespace Lernsoftware
         static void Main()
         {
             
-            Application.EnableVisualStyles();
+            /*Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form1());*/
 
             /*Testing CardBox Klasse
 
@@ -25,14 +25,27 @@ namespace Lernsoftware
             User user = new User();
             user = user.loginUser("Albert", "1234");
             user.createNewCardBox(user.UserId, "Schalke"); 
-
             CardBox tobias = user.getCardboxById(6, user.UserId);
-
             Console.WriteLine(tobias.CardBoxName);
             tobias.changeName(tobias, "Dönerteller");
             Console.WriteLine(tobias.CardBoxName);
+
+
+            // Test Methode addRegister:
+            User user = new User();
+            user = user.loginUser("Albert", "1234");
+            CardBox test = user.getCardboxById(6, user.UserId);
+            test.addRegister(test, "Testregister");
+
+
+            // Test Methode createFileCard:
+            User user = new User();
+            user = user.loginUser("Albert", "1234");
+            CardBox test = user.getCardboxById(6, user.UserId);
+            test.createFileCard("Veltins oder Teewors?", "Veltins", 10);
             
             */
+
 
             /* Testing User Klasse 
 

@@ -490,7 +490,7 @@ namespace Lernsoftware
             connection.Close();
         }
 
-        public List<LearningUnit> loadLearningUnitsFromDB(int userId)
+        /*public List<LearningUnit> loadLearningUnitsFromDB(int userId)
         {
             MySqlConnection connection = getConnection("root", "");
 
@@ -529,7 +529,7 @@ namespace Lernsoftware
             }
 
             return null;
-        }
+        }*/
 
 
 
