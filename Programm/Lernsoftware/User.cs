@@ -10,7 +10,6 @@ namespace Lernsoftware
     class User
     {
         private int userId; 
-        private static int idCounter = 0;
         private string username;
         private string password; 
         private List<CardBox> cardBoxList;
@@ -52,6 +51,7 @@ namespace Lernsoftware
             set => cardBoxList = value;
         }
         
+        //Ändert Cardbox-Namen
         public Boolean changeCardBox (User user, string alt, string neu)
         {
             List<CardBox> cardBoxes = connection.loadCardBoxesInUserFromDB(user.UserId);
@@ -67,7 +67,7 @@ namespace Lernsoftware
                 connection.updateCardboxInDB(cardbox, neu);
                 return true; 
             }
-            //where statement mit string alt = name; danach cardbox übergeben, ändern und neu speichern
+           
 
         }
         public void changePassword (User user, string neu)

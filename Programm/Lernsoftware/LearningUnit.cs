@@ -11,10 +11,10 @@ namespace Lernsoftware
         private int averageSuccessCB;
         private DateTime time;
         private int learningUnitId;
-        private static int idCounter = 0;
         CardBox cardBox;
         private List<Register> registerList;
         private int round; // Attribut muss in Register oder Cardbox
+        static MySQLDao connection = new MySQLDao();
         public int AverageSuccessCB
         {
             get => averageSuccessCB;
@@ -30,6 +30,12 @@ namespace Lernsoftware
             get => round;
             set => round = value; 
         }
+
+        public DateTime Time
+        {
+            get => time;
+            set => time = value; 
+        }
         public LearningUnit(CardBox cb)
         {
             time = DateTime.Now;
@@ -38,6 +44,11 @@ namespace Lernsoftware
             cardBox = cb;
             averageSuccessCB = cardBox.countRegistersSuccess(); //in CB ergänzen
             registerList = cardBox.Registers;
+        }
+
+        public void save(LearningUnit learningUnit, int userId)
+        {
+            connection.saveLearningUnitInDB(learningUnit, userId);
         }
         // Methode für den Aufruf der Register und einzelnen Averages
         public void showRegisters()

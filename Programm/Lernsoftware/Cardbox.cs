@@ -14,7 +14,7 @@ namespace Lernsoftware
         private string cardBoxName;
         private int containingRegisters;
         private int containingFileCards;
-        private int containingFileCards;
+       // private int containingFileCards;
         private List<Register> registers;
         private LearningUnit learningUnit;
         private CardBoxDesign cardBoxDesign;

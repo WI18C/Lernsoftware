@@ -15,7 +15,7 @@ namespace Lernsoftware
         private int registerId;
         private string registerName;
         private static int rIdCounter = 0;
-        private int containingFileCards;
+       // private int containingFileCards;
         private List<FileCard> fileCards = new List<FileCard>();
         private int registerTryCounter;
         private int registerRightCounter;
@@ -84,13 +84,13 @@ namespace Lernsoftware
             get => registerName;
             set => registerName = value;
         }
-        
+        /*
         public int ContainingFileCards
         {
             get => containingFileCards;
             set => containingFileCards = value;
         }
-        
+        */
         internal List<FileCard> FileCards
         {
             get => fileCards;

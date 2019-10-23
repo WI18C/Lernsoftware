@@ -14,11 +14,15 @@ namespace Lernsoftware
         [STAThread]
         static void Main()
         {
-            
+            /*
            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1()); 
-            
+            */
+            User user = new User(1,"Schalke");
+            CardBox cardBox = new CardBox("Schalke");
+            LearningUnit learningUnit = new LearningUnit(cardBox);
+            learningUnit.save(learningUnit,1);
 
             /* Testing User Klasse 
 
