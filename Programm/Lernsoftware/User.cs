@@ -139,17 +139,5 @@ namespace Lernsoftware
             else
                 return false;
         }
-
-        public CardBox getCardboxById(int cardboxId,int userId)
-        {
-            List<CardBox> cardBoxes = connection.loadCardBoxesInUserFromDB(userId);
-            CardBox cardbox = (from c in cardBoxes
-                               where c.CardBoxId == cardboxId
-                               select c).FirstOrDefault(); 
-            return cardbox; 
-        }
-
-
-
     }
 }

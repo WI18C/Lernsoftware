@@ -14,11 +14,11 @@ namespace Lernsoftware
         [STAThread]
         static void Main()
         {
-            
+            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-
+            */
             /*Testing CardBox Klasse
 
             // Test Methode changeName (CardBox):
@@ -32,8 +32,18 @@ namespace Lernsoftware
             tobias.changeName(tobias, "Dönerteller");
             Console.WriteLine(tobias.CardBoxName);
             
-            */
+            */ 
 
+            /* Testing LearningUnit
+
+            //Learningunit erstellen
+            User user = new User();
+            user = user.loginUser("Albert", "123");
+            CardBox fabian = user.getCardboxById(6, user.UserId);
+            LearningUnit learningUnit = new LearningUnit(fabian);
+            learningUnit.save(learningUnit,1);
+           
+             */
             /* Testing User Klasse 
 
             //User erstellen

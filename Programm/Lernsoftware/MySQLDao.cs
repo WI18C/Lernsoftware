@@ -472,7 +472,7 @@ namespace Lernsoftware
         {
             MySqlConnection connection = getConnection("root", "");
 
-            string commandstring = "INSERT INTO `statistics` (`stat_ID`, `user_ID`, `stat_right`, `stat_wrong`, `stat_time`, `stat_round`) " +
+            string commandstring = "INSERT INTO `statistic` (`stat_ID`, `user_ID`, `stat_right`, `stat_wrong`, `stat_time`, `stat_round`) " +
                                    "VALUES(NULL, '" + userId + "', '" + learningUnit.AverageSuccessCB + "', '0', '" + learningUnit.Time + "', '0');";
 
             if(connection.State.ToString() == "Open")
@@ -489,7 +489,7 @@ namespace Lernsoftware
             }
             connection.Close();
         }
-
+        /*
         public List<LearningUnit> loadLearningUnitsFromDB(int userId)
         {
             MySqlConnection connection = getConnection("root", "");
@@ -530,7 +530,7 @@ namespace Lernsoftware
 
             return null;
         }
-
+        */
 
 
     }

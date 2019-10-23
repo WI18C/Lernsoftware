@@ -9,7 +9,7 @@ namespace Lernsoftware
     class LearningUnit
     {
         private int averageSuccessCB;
-        private String date;
+        private String time;
         private int learningUnitId;
         CardBox cardBox;
         private int round; 
@@ -24,6 +24,7 @@ namespace Lernsoftware
             get => learningUnitId;
             set => learningUnitId = value; 
         }
+        
         public int Round
         {
             get => round;
@@ -42,9 +43,10 @@ namespace Lernsoftware
         }
         public LearningUnit(CardBox cb)
         {
-            time = getDate(); 
-            cardBox = cb;
-            averageSuccessCB = cardBox.countRegistersSuccess(cardBox);
+            Time = getDate(); 
+            CardBox = cb;
+            AverageSuccessCB = cardBox.countRegistersSuccess(cardBox);
+
         }
         public void save(LearningUnit learningUnit, int userId)
         {
@@ -53,15 +55,16 @@ namespace Lernsoftware
 
         public String getDate ()
         {
-            DateTime dt = new DateTime();
-            return String.Format("{0:MM/dd/yyyy}",dt);
+             DateTime localDate = DateTime.Now;
+             return  localDate.ToString(); 
         }
         
+        /*
         public List<LearningUnit> GetLearningUnits (int userId)
         {
             return connection.loadLearningUnitsFromDB(userId);
         }
-
+        */
         /*
         public List<String> getRegisterNames(CardBox cardBox)
         {
