@@ -472,8 +472,8 @@ namespace Lernsoftware
         {
             MySqlConnection connection = getConnection("root", "");
 
-            string commandstring = "INSERT INTO `statistic` (`stat_ID`, `user_ID`, `stat_right`, `stat_wrong`, `stat_time`, `stat_round`) " +
-                                   "VALUES(NULL, '" + userId + "', '" + learningUnit.AverageSuccessCB + "', '0', '" + learningUnit.Time + "', '0');";
+            string commandstring = "INSERT INTO `statistic` (`stat_ID`, `user_ID`, `stat_average`, `stat_time`, `stat_cardboxname`) " +
+                                   "VALUES(NULL, '" + userId + "', '" + learningUnit.AverageSuccessCB + "','" + learningUnit.Time + "', '" + learningUnit.CarddBoxName + "' );";
 
             if(connection.State.ToString() == "Open")
             {
@@ -489,13 +489,13 @@ namespace Lernsoftware
             }
             connection.Close();
         }
-        /*
+        
         public List<LearningUnit> loadLearningUnitsFromDB(int userId)
         {
             MySqlConnection connection = getConnection("root", "");
 
-            string commandstring = "SELECT stat_ID, user_ID, stat_right, stat_wrong, stat_rime, stat_round " +
-                                   "FROM `statistics` WHERE user_ID = " + userId + ";";
+            string commandstring = "SELECT stat_ID, user_ID, stat_average, stat_time, stat_cardboxname " +
+                                   "FROM `statistic` WHERE user_ID = " + userId + ";";
 
             if(connection.State.ToString() == "Open")
             {
@@ -510,7 +510,7 @@ namespace Lernsoftware
                         List<LearningUnit> learnings = new List<LearningUnit>();
                         while(reader.Read())
                         {
-                            LearningUnit learning = new LearningUnit(reader.GetInt32(0),reader.GetInt32(1),reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4),reader.GetInt32(5));
+                            LearningUnit learning = new LearningUnit(reader.GetInt32(0),reader.GetInt32(1),reader.GetInt32(2), reader.GetString(3), reader.GetString(4));
                             learnings.Add(learning);
                         }
 
@@ -530,7 +530,28 @@ namespace Lernsoftware
 
             return null;
         }
-        */
+
+        public void updateLearningUnit(LearningUnit learningUnit, int newAverage, String newTime)
+        {
+            MySqlConnection connection = getConnection("root", "");
+            //Erstellen einer LearningUnit mit veränderten Werten, aber gleicher ID
+            LearningUnit clone = new LearningUnit(learningUnit.LearningUnitId, learningUnit.UserId, newAverage, newTime, learningUnit.CarddBoxName); 
+            string commandstring = "UPDATE `statistic` SET `stat_average` = '" + clone.AverageSuccessCB + "',`stat_time`= '" + clone.Time + "' " +
+                                   "WHERE `statistic`.`stat_ID` = "+ clone.LearningUnitId + ";";
+            
+            MySqlCommand command = new MySqlCommand(commandstring, connection);
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+
+            catch(Exception)
+            {
+
+                throw;
+            }
+        }
+        
 
 
     }
