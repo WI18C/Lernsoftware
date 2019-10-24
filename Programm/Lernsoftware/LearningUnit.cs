@@ -11,8 +11,9 @@ namespace Lernsoftware
         private int averageSuccessCB;
         private String time;
         private int learningUnitId;
+        private int userId; 
         CardBox cardBox;
-        private int round; 
+        private String cardBoxName; 
         static MySQLDao connection = new MySQLDao();
         public int AverageSuccessCB
         {
@@ -24,13 +25,11 @@ namespace Lernsoftware
             get => learningUnitId;
             set => learningUnitId = value; 
         }
-        
-        public int Round
+        public int UserId
         {
-            get => round;
-            set => round = value; 
+            get => userId;
+            set => userId = value; 
         }
-
         public String Time
         {
             get => time;
@@ -41,16 +40,45 @@ namespace Lernsoftware
             get => cardBox;
             set => cardBox = value; 
         }
+        public String CarddBoxName
+        {
+            get => cardBoxName;
+            set => cardBoxName = value; 
+        }
+        //Konstruktor zum erstellen einer Learningunit zur Laufzeit 
         public LearningUnit(CardBox cb)
         {
             Time = getDate(); 
             CardBox = cb;
+            CarddBoxName = CardBox.CardBoxName; 
             AverageSuccessCB = cardBox.countRegistersSuccess(cardBox);
-
         }
+        //Konstruktor für ziehen der LearninngUnits aus der DB
+        public LearningUnit(int stat_ID, int user_ID, int stat_average, String stat_time, String stat_cardboxname)
+        {
+            LearningUnitId = stat_ID; 
+            UserId = user_ID; 
+            AverageSuccessCB = stat_average; 
+            Time = stat_time; 
+            CarddBoxName = stat_cardboxname; 
+        }
+        
+        //Speichert, falls zu Cardbox noch keine LU vorhanden neu, falls schon vorhanden wird LU überschrieben
         public void save(LearningUnit learningUnit, int userId)
         {
-            connection.saveLearningUnitInDB(learningUnit, userId);
+            List <LearningUnit> units = learningUnit.GetLearningUnits(userId);
+            String cardboxname = learningUnit.CarddBoxName; 
+            LearningUnit learning = (from c in units
+                               where c.CarddBoxName == cardboxname
+                               select c).FirstOrDefault();
+
+            if(learning == null) {
+                connection.saveLearningUnitInDB(learningUnit, userId);
+            }
+            
+            else {
+                connection.updateLearningUnit(learning, learningUnit.AverageSuccessCB, learningUnit.Time);
+            }   
         }
 
         public String getDate ()
@@ -59,10 +87,10 @@ namespace Lernsoftware
              return  localDate.ToString(); 
         }
         
-        /*public List<LearningUnit> GetLearningUnits (int userId)
+        public List<LearningUnit> GetLearningUnits (int userId)
         {
             return connection.loadLearningUnitsFromDB(userId);
-        }*/
+        }
 
         /*
         public List<String> getRegisterNames(CardBox cardBox)

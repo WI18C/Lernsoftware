@@ -46,16 +46,22 @@ namespace Lernsoftware
             
             */
 
-            /* Testing LearningUnit
+          
+            /* Testing Learningunit
+             * 
+            //Learningunit erstellen, save von Learning Unit mit überschreiben
 
-            //Learningunit erstellen
             User user = new User();
             user = user.loginUser("Albert", "123");
             CardBox fabian = user.getCardboxById(6, user.UserId);
             LearningUnit learningUnit = new LearningUnit(fabian);
             learningUnit.save(learningUnit,1);
+            
+            */
+            
+            
            
-             */
+             
             /* Testing User Klasse 
 
             //User erstellen
