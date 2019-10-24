@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 4.9.0.1
+﻿-- phpMyAdmin SQL Dump
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2019 at 07:19 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Erstellungszeit: 24. Okt 2019 um 18:59
+-- Server-Version: 10.4.8-MariaDB
+-- PHP-Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `lernsoftwaredb`
+-- Datenbank: `lernsoftwaredb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cardbox`
+-- Tabellenstruktur für Tabelle `cardbox`
 --
 
 CREATE TABLE `cardbox` (
@@ -35,7 +35,7 @@ CREATE TABLE `cardbox` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `cardbox`
+-- Daten für Tabelle `cardbox`
 --
 
 INSERT INTO `cardbox` (`cardbox_ID`, `cardbox_name`, `user_ID`) VALUES
@@ -43,12 +43,15 @@ INSERT INTO `cardbox` (`cardbox_ID`, `cardbox_name`, `user_ID`) VALUES
 (2, 'Logik und Algebra', 2),
 (3, 'Spanisch', 1),
 (4, 'Latein', 1),
-(5, 'YU-GI-OH', 3);
+(5, 'YU-GI-OH', 3),
+(6, 'Fabianmieft', 1),
+(8, 'Schalke', 1),
+(9, 'Schalke', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `filecard`
+-- Tabellenstruktur für Tabelle `filecard`
 --
 
 CREATE TABLE `filecard` (
@@ -59,7 +62,7 @@ CREATE TABLE `filecard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `filecard`
+-- Daten für Tabelle `filecard`
 --
 
 INSERT INTO `filecard` (`fc_ID`, `register_ID`, `fc_question`, `fc_answer`) VALUES
@@ -71,7 +74,7 @@ INSERT INTO `filecard` (`fc_ID`, `register_ID`, `fc_question`, `fc_answer`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `register`
+-- Tabellenstruktur für Tabelle `register`
 --
 
 CREATE TABLE `register` (
@@ -83,7 +86,7 @@ CREATE TABLE `register` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `register`
+-- Daten für Tabelle `register`
 --
 
 INSERT INTO `register` (`register_ID`, `cardbox_ID`, `register_Name`, `register_counter`, `register_rightcounter`) VALUES
@@ -94,36 +97,35 @@ INSERT INTO `register` (`register_ID`, `cardbox_ID`, `register_Name`, `register_
 (5, 2, '', 0, 0),
 (6, 2, '', 0, 0),
 (7, 3, '', 0, 0),
-(8, 4, '', 0, 0),
+(8, 6, '', 0, 0),
 (9, 2, 'Exampleregister', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `statistic`
+-- Tabellenstruktur für Tabelle `statistic`
 --
 
 CREATE TABLE `statistic` (
   `stat_ID` int(11) NOT NULL,
   `user_ID` int(11) NOT NULL,
-  `stat_right` int(11) NOT NULL,
-  `stat_wrong` int(11) NOT NULL,
-  `stat_time` int(11) NOT NULL,
-  `stat_round` int(11) NOT NULL
+  `stat_average` int(11) NOT NULL,
+  `stat_time` char(20) NOT NULL,
+  `stat_cardboxname` char(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `statistic`
+-- Daten für Tabelle `statistic`
 --
 
-INSERT INTO `statistic` (`stat_ID`, `user_ID`, `stat_right`, `stat_wrong`, `stat_time`, `stat_round`) VALUES
-(1, 1, 0, 0, 0, 0),
-(2, 2, 0, 0, 0, 0);
+INSERT INTO `statistic` (`stat_ID`, `user_ID`, `stat_average`, `stat_time`, `stat_cardboxname`) VALUES
+(1, 1, 2, 'jjj', 'Englisch'),
+(26, 1, 2, '24.10.2019 18:28:17', 'Fabianmieft');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Tabellenstruktur für Tabelle `user`
 --
 
 CREATE TABLE `user` (
@@ -133,83 +135,84 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Daten für Tabelle `user`
 --
 
 INSERT INTO `user` (`user_ID`, `user_name`, `user_password`) VALUES
-(1, 'Albert', '1234'),
+(1, 'Albert', '123'),
 (2, 'Bertram', '5678'),
 (3, 'Cäsar', '9999'),
 (4, 'Dolf', '0000'),
-(5, 'Elfride', '1234');
+(5, 'Elfride', '1234'),
+(6, 'Heinz', '12343');
 
 --
--- Indexes for dumped tables
+-- Indizes der exportierten Tabellen
 --
 
 --
--- Indexes for table `cardbox`
+-- Indizes für die Tabelle `cardbox`
 --
 ALTER TABLE `cardbox`
   ADD PRIMARY KEY (`cardbox_ID`);
 
 --
--- Indexes for table `filecard`
+-- Indizes für die Tabelle `filecard`
 --
 ALTER TABLE `filecard`
   ADD PRIMARY KEY (`fc_ID`);
 
 --
--- Indexes for table `register`
+-- Indizes für die Tabelle `register`
 --
 ALTER TABLE `register`
   ADD PRIMARY KEY (`register_ID`);
 
 --
--- Indexes for table `statistic`
+-- Indizes für die Tabelle `statistic`
 --
 ALTER TABLE `statistic`
   ADD PRIMARY KEY (`stat_ID`);
 
 --
--- Indexes for table `user`
+-- Indizes für die Tabelle `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
--- AUTO_INCREMENT for table `cardbox`
+-- AUTO_INCREMENT für Tabelle `cardbox`
 --
 ALTER TABLE `cardbox`
-  MODIFY `cardbox_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cardbox_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `filecard`
+-- AUTO_INCREMENT für Tabelle `filecard`
 --
 ALTER TABLE `filecard`
   MODIFY `fc_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `register`
+-- AUTO_INCREMENT für Tabelle `register`
 --
 ALTER TABLE `register`
   MODIFY `register_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `statistic`
+-- AUTO_INCREMENT für Tabelle `statistic`
 --
 ALTER TABLE `statistic`
-  MODIFY `stat_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `stat_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
