@@ -53,30 +53,21 @@ namespace Lernsoftware
 
         // Schiebt FileCard ein Register weiter
         
-        /*public void moveFileCard(CardBox cardBox, int registerId, int fileCardId)
+        public void moveFileCard(int oldRegisterId, int fileCardId)
         {
-            List<Register> registers = connection.loadRegistersInCardboxFromDB(cardBox);
-
-            foreach(var Register in registers)
-            {
-                List<FileCard> fileCards = connection.loadFilecardsInResgisterFromDB(registerId);
-
-                foreach(var FileCard in fileCards)
-                {
-                    if(FileCard.fileCardId == fileCardId)
-                    {
-                        if(Register.RIdCounter > Register.RegisterId)
-                            {
-                                
-                                getRegisterById(Register.RegisterId + 1).Add(getFileCardById(movingFileCardId));
-                                Register.Remove(getFileCardById(movingFileCardId));
-                                break;
-                            }
-                        else{}
-                    }
-                }
-            }
-        }*/
+            registers = connection.loadRegistersInCardboxFromDB(this.cardBoxId);
+            
+            for (int i = 0; i < Registers.Count - 1; i++)
+			{
+                 if(registers[i].RegisterId == oldRegisterId && registers[i+1] != null)
+                 {
+                    int newRegisterId = registers[i+1].RegisterId;
+                    connection.moveFileCardInRegister(newRegisterId, fileCardId);
+                    break;
+                 }
+                else {}
+			}
+        }
         
         //Löscht FileCard aus dem Register
         /*public void deleteFileCard(int deletingFileCard)
@@ -100,14 +91,7 @@ namespace Lernsoftware
             FileCard neueFileCard = new FileCard(fquestion, fanswer);
             connection.saveSingleFileCardinDB(neueFileCard, registerId);
         }
-        
-        /*public void addNewFileCardIntoRegister(int regId)
-        {
-            if(Register.registerId == regId)
-            {
-                Register.fileCards.Add(createFileCard());
-            }
-        }*/
+
         
         public Register getRegisterById(int registerId, int cardBoxId)
         {

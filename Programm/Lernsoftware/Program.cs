@@ -14,10 +14,11 @@ namespace Lernsoftware
         [STAThread]
         static void Main()
         {
-            
+
             /*Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());*/
+            Application.Run(new Form1());
+            */
 
             /*Testing CardBox Klasse
 
@@ -36,15 +37,19 @@ namespace Lernsoftware
             user = user.loginUser("Albert", "1234");
             CardBox test = user.getCardboxById(6, user.UserId);
             test.addRegister(test, "Testregister");
-
+            */
 
             // Test Methode createFileCard:
-            User user = new User();
+            /*User user = new User();
             user = user.loginUser("Albert", "1234");
             CardBox test = user.getCardboxById(6, user.UserId);
-            test.createFileCard("Veltins oder Teewors?", "Veltins", 10);
-            
-            */
+            test.createFileCard("Veltins oder Teewors?", "Veltins", 10);*/
+
+            // Test Methode moveFileCard:
+            /*User user = new User();
+            user = user.loginUser("Bertram", "5678");
+            CardBox test = user.getCardboxById(2, user.UserId);
+            test.moveFileCard(9, 6);*/
 
           
             /* Testing Learningunit
