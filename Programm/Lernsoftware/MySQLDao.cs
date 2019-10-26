@@ -196,6 +196,27 @@ namespace Lernsoftware
             }
         }
 
+        public void moveFileCardInRegister(int registerId, int fileCardId)
+        {
+            MySqlConnection connection = getConnection("root", "");
+
+            string commandstring = "UPDATE `filecard` SET `register_ID` = '" + registerId + "' WHERE `filecard`.`fc_ID` = " + fileCardId + ";";
+
+            if(connection.State.ToString() == "Open")
+            {
+                MySqlCommand command = new MySqlCommand(commandstring, connection);
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch(Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            connection.Close();
+        }
+
         //==================================================Register==================================================
         public List<Register> loadRegistersInCardboxFromDB(int cardboxID)
         {
