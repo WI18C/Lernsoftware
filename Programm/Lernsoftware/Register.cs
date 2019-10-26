@@ -151,7 +151,7 @@ namespace Lernsoftware
       connection.saveRegisterInDB(cardboxID, registername);
     }
 
-    public void loadCardsinRegister(int registerID)
+    public void loadCardsInRegister(int registerID)
     {
       connection.loadFilecardsInResgisterFromDB(registerID);
     }
