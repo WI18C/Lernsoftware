@@ -127,6 +127,7 @@ namespace Lernsoftware
                 {
                     throw ex;
                 }
+                connection.Close();
             }
 
             return null;
@@ -169,6 +170,7 @@ namespace Lernsoftware
 
                 throw;
             }
+            connection.Close();
         }
 
         /**
@@ -194,6 +196,7 @@ namespace Lernsoftware
 
                 throw;
             }
+            connection.Close();
         }
 
         public void moveFileCardInRegister(int registerId, int fileCardId)
@@ -248,12 +251,14 @@ namespace Lernsoftware
 
                     else
                         return null;
+                    connection.Close();
                 }
 
                 catch(Exception ex)
                 {
                     throw ex;
                 }
+
             }
 
             return null;
@@ -299,6 +304,7 @@ namespace Lernsoftware
 
                 throw;
             }
+            connection.Close();
         }
 
         //=================================================Cardboxes==================================================
@@ -339,6 +345,7 @@ namespace Lernsoftware
                 {
                     throw ex;
                 }
+                connection.Close();
             }
 
             return null;
@@ -385,6 +392,7 @@ namespace Lernsoftware
 
                 throw;
             }
+            connection.Close();
         }
 
         //===================================================Users==================================================
@@ -424,6 +432,7 @@ namespace Lernsoftware
                 {
                     throw ex;
                 }
+                connection.Close();
             }
 
             return null;
@@ -485,6 +494,7 @@ namespace Lernsoftware
 
                 throw;
             }
+            connection.Close();
         }
 
 
@@ -540,7 +550,9 @@ namespace Lernsoftware
                     }
 
                     else
+                        connection.Close();
                         return null;
+
                 }
 
                 catch(Exception ex)
@@ -548,7 +560,7 @@ namespace Lernsoftware
                     throw ex;
                 }
             }
-
+            connection.Close();
             return null;
         }
 
@@ -571,9 +583,7 @@ namespace Lernsoftware
 
                 throw;
             }
+            connection.Close();
         }
-        
-
-
     }
 }

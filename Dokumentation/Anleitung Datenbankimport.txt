@@ -1,0 +1,25 @@
+Anleitung zum importieren der Datenbank für das Programm "Lernsoftware":
+
+1. Bitte laden Sie sich die Software XAMPP herunter und installieren Sie es.
+   Das Programm finden Sie unter folgender Adresse:
+   https://www.apachefriends.org/de/download.html
+
+2. Starten Sie das XAMPP Control Panel und starten Sie "Apache" und "MySQL".
+
+3. Betätigen Sie in der Zeile "MySQL" den Button "Admin".
+
+4. Legen Sie bitte eine neues Datenbankschema mit dem Namen
+   "lernsoftwaredb" an (Ohne Anführungszeichen).
+
+5. Wählen Sie nun die "lernsoftwaredb" aus und klicken Sie in der oberen
+   Zeile auf "Import"
+
+6. Klicken Sie nun auf "browse" und navigieren Sie zu dem ort, an dem Sie
+   das File "lernsoftwaredb.sql" gespeichert haben, wählen Sie dieses aus
+   und bestätigen Sie.
+
+7. Scrollen sie nach unten und bestätigen "Go".
+
+8. Die Datenbank ist nun importiert und Einsatzbereit. Bitte beachten Sie,
+   dass während der Benutzung der "Lernsoftware" XAMPP gestartet und sowohl
+   "Apache" als auch "MySQL" gestartet sein muss. 
