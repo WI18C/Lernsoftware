@@ -1,0 +1,22 @@
+Not properly working yet:
+Icons fehlen ?? (mit relativem Pfad ../icons/... -> bei euch auch?!)
+Register nicht angebunden; Begrenzung auf max. 6 fehlt
+Training: nach Auswählen einer Cardbox automatisch im Trainingsmodus; wird Training noch mal zusätzlich angeklickt, springt es auf eine andere Cardbox
+Training: Trainingsmodus selbst funktioniert noch nicht, da fehlende Registeranbindung
+Settings: Anlegen neuer FileCard per finished-Button funktioniert nicht (im Code angefangen, funktioniert aber noch nicht; targetButton will irgendwie nicht)
+Question / Answer Textfeld holt sich Input noch nicht aus DB
+
+
+Working:
+Login mit richtigem Passwort
+Login mit falschem Passwort -> Fehlermeldung
+Registrierung mit 2x gleichem Passwort
+Registrierung mit ungleichem Passwort -> Fehlermeldung
+bei Fehleingabe Login/Registrierung -> Maske wird zurück auf Anfang gesetzt
+Login/Registrierung ohne vorhandene Cardboxes möglich
+bereits vorhandene Cardboxes werden auf Startseite angezeigt
+automatischer Refresh der Startseite nach Neuanlage einer Cardbox
+Training und Settings nur bei ausgewählter Cardbox aktiv
+Training: Wechsel auf FileCard zwischen Question und Answer möglich -> s.a.o.
+Settings: Anlegen neuer FileCard per next-Button möglich -> s.a.o.
+Logout funktioniert
